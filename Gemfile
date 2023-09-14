@@ -44,8 +44,8 @@ group :development, :test do
   gem "byebug"
   gem "annotate"
   gem "pry-rails"
-  gem "better-errors"
-  gem "binding of caller"
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 group :development do
