@@ -25,5 +25,6 @@ async function csrfFetch(url, options = {}) {
     storeCSRFToken(response);
     return response;
   }
+
   
   export default csrfFetch;

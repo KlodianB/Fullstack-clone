@@ -5,15 +5,15 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import configureStore from './store';
-import csrfFetch from "./store/csrf";
-import * as sessionActions from './store/session';
+import csrfFetch, { restoreCSRF } from './store/csrf';
+
 
 const store = configureStore();
 
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV !== 'production') {
+  window.store = store;
   window.store = store;
   window.csrfFetch = csrfFetch;
-  window.sessionActions = sessionActions;
 }
 
 function Root() {
@@ -21,34 +21,22 @@ function Root() {
     <Provider store={store}>
       <BrowserRouter>
         <App />
-        {/* <Carrot /> */}
       </BrowserRouter>
     </Provider>
   );
 }
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const renderApplication = () => {
+  ReactDOM.render(
+    <React.StrictMode>
+      <Root />
+    </React.StrictMode>,
+    document.getElementById('root')
+  );
+}
 
-// const renderApplication = () => {
-//   ReactDOM.render(
-//     <React.StrictMode>
-//       <Root />
-//     </React.StrictMode>,
-//     document.getElementById('root')
-//   );
-// }
-
-
-if (
-  sessionStorage.getItem("currentUser") === null ||
-  sessionStorage.getItem("X-CSRF-Token") === null 
-) {
-  store.dispatch(sessionActions.restoreSession()).then(renderApplication);
+if (sessionStorage.getItem("X-CSRF-Token") === null) {
+  restoreCSRF().then(renderApplication);
 } else {
   renderApplication();
 }
