@@ -7,7 +7,7 @@ class Api::UsersController < ApplicationController
   end
   
   def show
-    @user = User.find_by(id: params(:id)
+    @user = User.find_by(id: params(:id))
 
     if @user 
       render :show
@@ -23,6 +23,7 @@ class Api::UsersController < ApplicationController
         render :show
       else 
         render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+      end
   end
 
 
