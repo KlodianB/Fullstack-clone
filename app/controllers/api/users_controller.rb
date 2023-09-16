@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-  wrap_parameters include: User.attribute_names + ['password']
+  wrap_parameters include: User.attribute_names + ['password', 'firstName', 'lastName']
 
   def index 
     @users = User.all 
@@ -28,6 +28,7 @@ class Api::UsersController < ApplicationController
 
 
   def create
+    debugger
     @user = User.new(user_params)
 
     if @user.save

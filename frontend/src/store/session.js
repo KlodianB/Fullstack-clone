@@ -27,6 +27,12 @@ export const login = ({ email, password }) => async dispatch => {
     method: "POST",
     body: JSON.stringify({ email, password })
   });
+
+  if (!response.ok) { // If HTTP status code is not in the 200-299 range
+    const errorData = await response.json();
+    throw errorData;  // Throw an error to be caught later
+  }
+
   const data = await response.json();
   storeCurrentUser(data.user);
   dispatch(setCurrentUser(data.user));
@@ -43,13 +49,16 @@ export const restoreSession = () => async dispatch => {
 };
 
 export const signup = (user) => async (dispatch) => {
-  const { username, email, password } = user;
+  const { email, firstName, lastName, password, birthday, gender } = user;
   const response = await csrfFetch("/api/users", {
     method: "POST",
     body: JSON.stringify({
-      username,
       email,
-      password
+      firstName,
+      lastName,
+      password,
+      birthday,
+      gender
     })
   });
   const data = await response.json();
@@ -66,6 +75,7 @@ export const logout = () => async (dispatch) => {
   dispatch(removeCurrentUser());
   return response;
 };
+
 
 const initialState = { 
   user: JSON.parse(sessionStorage.getItem("currentUser"))

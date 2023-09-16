@@ -1,6 +1,20 @@
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import LoginFormPage from './components/LoginFormPage';
+import SignUpForm from './components/SignUpForm';
+
 function App() {
   return (
-    <h1>Hello from App</h1>
+    <Switch>
+      <Route exact path="/">
+        <div>
+          <LoginFormPage />
+        </div>
+      </Route>
+      <Route path="/signup">
+        <SignUpForm />
+      </Route>
+    </Switch>
   );
 }
 
