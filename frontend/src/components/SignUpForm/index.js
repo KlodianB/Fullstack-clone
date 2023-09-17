@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
-import './style.css'
+import './styles.css'
 
 const SignUpForm = () => {
     const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const SignUpForm = () => {
     const [day, setDay] = useState(1)
     const [year, setYear] = useState(1)
     const [gender, setGender] = useState("");
-    const [customGenderPronoun, setCustomGenderPronoun] = useState("")
+    const [customGenderPronoun, setCustomGenderPronoun] = useState(false)
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errors, setErrors] = useState([]);
@@ -23,22 +23,21 @@ const SignUpForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (password === confirmPassword) {
-            // let date = new Date(`${year} ${month}, ${day}`)
-            // setBirthday(date)
-          setErrors([]);
-          return dispatch(sessionActions.signup({ firstName, lastName, email, password, birthday, gender }))
+            setBirthday(new Date(`${year}-${month}-${day}`))
+            setErrors([]);
+            return dispatch(sessionActions.signup({ firstName, lastName, email, password, birthday, gender }))
             .catch(async (res) => {
             let data;
             try {
-              // .clone() essentially allows you to read the response body twice
-              data = await res.clone().json();
+                // .clone() essentially allows you to read the response body twice
+                data = await res.clone().json();
             } catch {
-              data = await res.text(); // Will hit this case if the server is down
+                data = await res.text(); // Will hit this case if the server is down
             }
             if (data?.errors) setErrors(data.errors);
             else if (data) setErrors([data]);
             else setErrors([res.statusText]);
-          });
+            });
         }
         return setErrors(['Confirm Password field must be the same as the Password field']);
       };
@@ -81,7 +80,15 @@ const SignUpForm = () => {
 
       
       return (
+        <>
         <form onSubmit={handleSubmit} className="signup-form" id="signupForm">
+        <div className="signup-form-header">
+            <h1 className="signup-header">Sign Up</h1>
+            <div className="close-signup-form"><button className="close-signup-form">x</button></div>
+        </div>
+        <div className="sub-header-container">
+        <h2 className="sub-header">It's quick and easy.</h2>
+        </div>
         <ul className="error-list">
             {errors.map((error, index) => <li key={index} className="error-item">{error}</li>)}
         </ul>
@@ -129,8 +136,8 @@ const SignUpForm = () => {
               required
               className="form-input"
             />
-
-        {/* <label className="form-label" htmlFor="confirmPassword"></label>
+{/* 
+        <label className="form-label" htmlFor="confirmPassword"></label>
             <input
               type="password"
               id="confirmPassword"
@@ -155,7 +162,7 @@ const SignUpForm = () => {
         </div>
     </div>
         <label className="form-label gender-label">
-            Gender
+        <span className="gender-label">Gender</span>
             <div className="gender-container">
                 <div className="gender-option-buttons">
                 <label className="gender-option">
@@ -165,10 +172,12 @@ const SignUpForm = () => {
                         name="gender"
                         value="Female"
                         checked={gender === "Female"}
-                        onChange={(e) => setGender(e.target.value)}
+                        onChange={(e) => {
+                            setGender(e.target.value)
+                            setCustomGenderPronoun(false)
+                        }}
                     />
                     Female
-                    <span></span>
                 </label>
                 <label className="gender-option">
                     <input 
@@ -177,10 +186,12 @@ const SignUpForm = () => {
                         name="gender"
                         value="Male"
                         checked={gender === "Male"}
-                        onChange={(e) => setGender(e.target.value)}
+                        onChange={(e) => {
+                            setGender(e.target.value);
+                            setCustomGenderPronoun(false)
+                        }}
                     />
                     Male
-                    <span></span>
                 </label>
                 <label className="gender-option">
                     <input 
@@ -189,21 +200,24 @@ const SignUpForm = () => {
                         name="gender"
                         value="Custom"
                         checked={gender === "Custom"}
-                        onChange={(e) => setGender(e.target.value)}
+                        onChange={(e) => {
+                            setGender(""); 
+                            setCustomGenderPronoun(true);
+                        }}
                     />
                     Custom
                 </label>
                 </div>
-                {gender === "Custom" && (
+                {customGenderPronoun ? 
                     <div className="custom-option">
                     <select 
                     id="customPronoun"
-                    value={customGenderPronoun}
-                    onChange={(e) => setCustomGenderPronoun(e.target.value)}
+                    defaultValue="Select your pronoun"
+                    onChange={(e) => setGender(e.target.value)}
                     required
                     className="gender-select"
                     >
-                        <option value="" disabled>Select your pronoun</option>
+                        <option key="disabled" disabled={true}>Select your pronoun</option>
                         <option value="He">He</option>
                         <option value="She">She</option>
                         <option value="They">They</option>
@@ -212,18 +226,21 @@ const SignUpForm = () => {
                         <input
                             type="text"
                             id="customGenderPronoun"
-                            value={customGenderPronoun}
                             placeholder="Gender (optional)"
-                            onChange={(e) => setCustomGenderPronoun(e.target.value)}
+                            onChange={(e) => setGender(e.target.value)}
                             required
                             className="form-input"
                         />
                     </div>
-                )}
+                : null}
             </div>
         </label>
+        <p className="disclaimer" id="top-disclaimer">People who use our service may have uploaded your contact information to Facebook. <a id ="learn-more" className="disclaimer" href="https://www.facebook.com/help/637205020878504">Learn more.</a></p>
+        <br></br>
+        <p className="disclaimer">By clicking Sign Up, you agree to our <a id="terms" className="disclaimer" href="https://www.facebook.com/legal/terms/update">Terms</a>, <a id="privacy-policy" className="disclaimer" href="https://www.facebook.com/privacy/policy/?entry_point=data_policy_redirect&entry=0">Privacy Policy</a> and <a id="cookies-policy"className="disclaimer" href="https://www.facebook.com/privacy/policies/cookies/?entry_point=cookie_policy_redirect&entry=0">Cookies Policy</a>. You may receive SMS Notifications from us and can opt out any time.</p>
         <button type="submit" className="signup-btn" id="submitBtn">Sign Up</button>
     </form>
+    </>
       );
 }
 

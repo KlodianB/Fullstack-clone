@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-// import "./LoginForm.css";
+import "./login-styles.css"
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -47,35 +47,37 @@ function LoginForm() {
 //     });
 // };
 
-  return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map(error => <li key={error}>{error}</li>)}
-        </ul>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Log In</button>
-      </form>
-    </>
-  );
+return (
+      <>
+          <form onSubmit={handleSubmit}>
+              <ul>
+                  {errors.map(error => <li key={error}>{error}</li>)}
+              </ul>
+              <input
+                  type="text"
+                  id="login-email"
+                  value={email}
+                  placeholder="Email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+              />
+              <input
+                  type="password"
+                  value={password}
+                  placeholder="Password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+              />
+              <button type="submit">Log In</button>
+              <div className="links">
+                  <a id="demo-login" href="#demo-login">Demo Login</a>
+                  {/* Space here just for better visual spacing; can be left empty */}
+                  <span></span>
+              </div>
+              <div className="create-button"><button type="button" className="create-account">Create New Account</button></div>
+          </form>
+      </>
+    );
 }
 
 export default LoginForm;
