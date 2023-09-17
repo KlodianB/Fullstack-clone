@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
+import './style.css'
 
 const SignUpForm = () => {
     const dispatch = useDispatch();
@@ -22,8 +23,10 @@ const SignUpForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (password === confirmPassword) {
+            // let date = new Date(`${year} ${month}, ${day}`)
+            // setBirthday(date)
           setErrors([]);
-          return dispatch(sessionActions.signup({ email, password }))
+          return dispatch(sessionActions.signup({ firstName, lastName, email, password, birthday, gender }))
             .catch(async (res) => {
             let data;
             try {
@@ -78,116 +81,149 @@ const SignUpForm = () => {
 
       
       return (
-        <form onSubmit={handleSubmit}>
-          <ul>
-            {errors.map(error => <li key={error}>{error}</li>)}
-          </ul>
-          <label>
-            First Name
+        <form onSubmit={handleSubmit} className="signup-form" id="signupForm">
+        <ul className="error-list">
+            {errors.map((error, index) => <li key={index} className="error-item">{error}</li>)}
+        </ul>
+        <div className="name-container">
+        <label className="form-label" htmlFor="firstName">
             <input
               type="text"
+              id="firstName"
+              placeholder="First Name"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
               required
+              className="form-input"
             />
-          </label>
-          <label>
-            Last Name
+        </label>
+        <label className="form-label" htmlFor="lastName">
             <input
               type="text"
+              id="lastName"
               value={lastName}
+              placeholder="Last Name"
               onChange={(e) => setLastName(e.target.value)}
               required
+              className="form-input"
             />
-          </label>
-          <label>
-            Email
+        </label>
+        </div>
+        <label className="form-label" htmlFor="email">
             <input
               type="text"
+              id="email"
               value={email}
+              placeholder="Email"
               onChange={(e) => setEmail(e.target.value)}
               required
+              className="form-input"
             />
-          </label>
-          <label>
-                Birthday
-                <select name="month" value={month} onChange={(e) => setMonth(e.target.value)} required>
-                    {renderMonthOptions()}
-                </select>
-                <select name="day" value={day} onChange={(e) => setDay(e.target.value)} required>
-                    {renderDayOptions()}
-                </select>
-                <select name="year" value={year} onChange={(e) => setYear(e.target.value)} required>
-                    {renderYearOptions()}
-                </select>
-            </label>
-          <label>
-            Password
+        </label>
             <input
               type="password"
+              id="password"
               value={password}
+              placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
               required
+              className="form-input"
             />
-          </label>
-          <label>
-            Confirm Password
+
+        {/* <label className="form-label" htmlFor="confirmPassword"></label>
             <input
               type="password"
+              id="confirmPassword"
               value={confirmPassword}
+              placeholder="Confirm Password"
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
-            />
-          </label>
-          <label>
-    Gender
-    <div>
-        <label>
-            <input 
-                type="radio" 
-                name="gender"
-                value="Male"
-                checked={gender === "Male"}
-                onChange={(e) => setGender(e.target.value)}
-            />
-            Male
-        </label>
-        <label>
-            <input 
-                type="radio" 
-                name="gender"
-                value="Female"
-                checked={gender === "Female"}
-                onChange={(e) => setGender(e.target.value)}
-            />
-            Female
-        </label>
-        <label>
-            <input 
-                type="radio" 
-                name="gender"
-                value="Custom"
-                checked={gender === "Custom"}
-                onChange={(e) => setGender(e.target.value)}
-            />
-            Custom
-        </label>
-        {gender === "Custom" && (
-            <select 
-                value={customGenderPronoun}
-                onChange={(e) => setCustomGenderPronoun(e.target.value)}
-                required
-            >
-                <option value="" disabled>Select your pronoun</option>
-                <option value="He">He</option>
-                <option value="She">She</option>
-                <option value="They">They</option>
+              className="form-input"
+            /> */}
+        <div className="birthday-container">
+    <span className="birthday-label">Birthday</span>
+    <div className="date-dropdowns">
+        <select name="month" id="birthMonth" value={month} onChange={(e) => setMonth(e.target.value)} required className="birthday-select">
+            {renderMonthOptions()}
+        </select>
+        <select name="day" id="birthDay" value={day} onChange={(e) => setDay(e.target.value)} required className="birthday-select">
+            {renderDayOptions()}
+        </select>
+        <select name="year" id="birthYear" value={year} onChange={(e) => setYear(e.target.value)} required className="birthday-select">
+            {renderYearOptions()}
             </select>
-        )}
+        </div>
     </div>
-</label>
-          <button type="submit">Sign Up</button>
-        </form>
+        <label className="form-label gender-label">
+            Gender
+            <div className="gender-container">
+                <div className="gender-option-buttons">
+                <label className="gender-option">
+                    <input 
+                        type="radio" 
+                        id="femaleGender"
+                        name="gender"
+                        value="Female"
+                        checked={gender === "Female"}
+                        onChange={(e) => setGender(e.target.value)}
+                    />
+                    Female
+                    <span></span>
+                </label>
+                <label className="gender-option">
+                    <input 
+                        type="radio"
+                        id="maleGender"
+                        name="gender"
+                        value="Male"
+                        checked={gender === "Male"}
+                        onChange={(e) => setGender(e.target.value)}
+                    />
+                    Male
+                    <span></span>
+                </label>
+                <label className="gender-option">
+                    <input 
+                        type="radio" 
+                        id="customGender"
+                        name="gender"
+                        value="Custom"
+                        checked={gender === "Custom"}
+                        onChange={(e) => setGender(e.target.value)}
+                    />
+                    Custom
+                </label>
+                </div>
+                {gender === "Custom" && (
+                    <div className="custom-option">
+                    <select 
+                    id="customPronoun"
+                    value={customGenderPronoun}
+                    onChange={(e) => setCustomGenderPronoun(e.target.value)}
+                    required
+                    className="gender-select"
+                    >
+                        <option value="" disabled>Select your pronoun</option>
+                        <option value="He">He</option>
+                        <option value="She">She</option>
+                        <option value="They">They</option>
+                    </select>
+                        <p id="disclaimer">Your pronoun is visible to everyone.</p>
+                        <input
+                            type="text"
+                            id="customGenderPronoun"
+                            value={customGenderPronoun}
+                            placeholder="Gender (optional)"
+                            onChange={(e) => setCustomGenderPronoun(e.target.value)}
+                            required
+                            className="form-input"
+                        />
+                    </div>
+                )}
+            </div>
+        </label>
+        <button type="submit" className="signup-btn" id="submitBtn">Sign Up</button>
+    </form>
       );
 }
 

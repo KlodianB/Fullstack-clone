@@ -1,0 +1,179 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+}
+
+
+.signup-form {
+    width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.error-list {
+    list-style-type: none;
+    margin-bottom: 20px;
+    color: red;
+    padding-left: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    color: #1c1e21;
+    font-size: 12px;
+    margin-right: 5px;
+}
+
+input[type="text"], 
+input[type="password"], 
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccd0d5;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+select:focus {
+    border-color: #1877f2;
+    outline: none;
+}
+
+input[type="radio"] {
+    margin-right: 4px;
+}
+
+.gender-option {
+    display: inline-block;
+    margin-right: 15px;
+    font-weight: normal;
+}
+
+.signup-btn {
+    width: 100%;
+    background-color: #00a400;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 0;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.signup-btn:hover {
+    background-color: #165dbb;
+}
+
+/* For the gender dropdown when custom is selected */
+select.gender-select {
+    margin-top: 10px;
+    display: block;
+}
+
+.gender-option {
+    display: inline-block;
+    border: 1px solid #ccd0d5;
+    padding: 10px 40px 10px 10px; /* More padding on the right for the circle */
+    border-radius: 5px;
+    position: relative;
+    margin-right: 10px; /* Space between options */
+    cursor: pointer;
+    min-width: 110px;
+    transition: background-color 0.2s;
+}
+/* 
+.gender-container {
+    border: 5px solid black;
+} */
+
+.gender-option-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    /* border: 5px solid black; */
+}
+
+.gender-option:hover {
+    background-color: #f2f3f5;
+}
+
+.gender-option input[type="radio"] {
+    display: none; /* Hide the default radio */
+}
+
+
+.gender-option input[type="radio"]:checked + span::before {
+    content: '';
+    position: absolute;
+    right: 10px; /* Position from the right */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #1877f2;
+}
+
+/* For date dropdowns */
+.birthday-select {
+    flex: 1; /* equally distribute the width */
+    margin-right: 12px; 
+}
+
+.birthday-container {
+    margin-bottom: 15px;
+}
+
+.birthday-label {
+    display: block;
+    margin-bottom: 0px;
+    color: #929395;
+    font-size: 12px;
+    margin-top: 13px;
+}
+
+.date-dropdowns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.birthday-select:last-child {
+    margin-right: 0; /* no margin for the last dropdown */
+}
+
+.name-container {
+    display: flex;
+    justify-content:space-between; /* Space out the two inputs */
+    margin-bottom: 0px;
+}
+
+#firstName {
+margin-right: 5px;
+}
+
+
+.form-input {
+    width: calc(50% - 10px); /* Half of the width minus half of the gap between inputs */
+}
+
+#disclaimer {
+    margin-top: 5px;
+    color: #606770;
+    font-size: 12px;
+}
+
+#customGenderPronoun {
+    margin-top: 10px;
+    background-color: #f5f6f7;
+}
