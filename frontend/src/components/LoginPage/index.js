@@ -43,11 +43,17 @@ function LoginForm() {
 
 return (
       <>
-          <form onSubmit={handleSubmit}>
-              <ul>
+        <div className="login-page">
+          <div className="login-left">
+            <div className="fb-logo">facebook</div>
+              <p>Connect with friends and the world around you on Facebook.</p>
+            </div>
+            <div className="login-right">
+              <form onSubmit={handleSubmit}>
+                <ul>
                   {errors.map(error => <li key={error}>{error}</li>)}
-              </ul>
-              <input
+                </ul>
+                <input
                   type="text"
                   id="login-email"
                   value={email}
@@ -55,24 +61,24 @@ return (
                   placeholder="Email"
                   onChange={(e) => setEmail(e.target.value)}
                   required
-              />
-              <input
-                  type="password"
-                  value={password}
-                  className="credentials"
-                  placeholder="Password"
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-              />
-              <button type="submit" id="login">Log In</button>
-              <div className="links">
+                />
+                <input
+                    type="password"
+                    value={password}
+                    className="credentials"
+                    placeholder="Password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
+                <button type="submit" id="login">Log In</button>
+                <div className="links">
                   <a id="demo-login" onClick={handleDemoLogin} href="#demo-login">Demo Login</a>
-                  {/* Space here just for better visual spacing; can be left empty */}
-                  <span></span>
-              </div>
-              <div className="create-button"><button type="button" onClick={openModal} id="create-new-account" className="create-account">Create New Account</button></div>
-          </form>
-      </>
+                </div>
+                <div className="create-button"><button type="button" onClick={openModal} id="create-new-account" className="create-account">Create New Account</button></div>
+              </form>
+            </div>
+          </div>
+        </>
     );
 }
 
