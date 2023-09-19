@@ -3,6 +3,7 @@ import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import "./login-styles.css"
+import { getModalDisplay, setModalDisplay } from "../../store/ui";
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -10,13 +11,13 @@ function LoginForm() {
   const sessionUser = useSelector(state => state.session.user);
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const modalDisplay = useSelector(getModalDisplay)
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
     return dispatch(sessionActions.login({ email, password }))
       .catch(async (res) => {
-        debugger
         let data;
         try {
           // .clone() essentially allows you to read the response body twice
@@ -31,21 +32,14 @@ function LoginForm() {
       });
   };
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     setErrors([]);
-    
-//     return dispatch(sessionActions.login({ email, password }))
-//       .catch((error) => {
-//         if (error?.errors) {
-//             setErrors(error.errors);
-//         } else if (error && typeof error === 'string') {
-//             setErrors([error]);
-//         } else {
-//             setErrors(["An unknown error occurred."]);
-//         }
-//     });
-// };
+  const handleDemoLogin = (e) => {
+    dispatch(sessionActions.login( {email: 'email@email.com', password: 'password'}))
+  }
+
+  const openModal = (e) => {
+    dispatch(setModalDisplay(!modalDisplay))
+  }
+
 
 return (
       <>
@@ -57,6 +51,7 @@ return (
                   type="text"
                   id="login-email"
                   value={email}
+                  className="credentials"
                   placeholder="Email"
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -64,17 +59,18 @@ return (
               <input
                   type="password"
                   value={password}
+                  className="credentials"
                   placeholder="Password"
                   onChange={(e) => setPassword(e.target.value)}
                   required
               />
-              <button type="submit">Log In</button>
+              <button type="submit" id="login">Log In</button>
               <div className="links">
-                  <a id="demo-login" href="#demo-login">Demo Login</a>
+                  <a id="demo-login" onClick={handleDemoLogin} href="#demo-login">Demo Login</a>
                   {/* Space here just for better visual spacing; can be left empty */}
                   <span></span>
               </div>
-              <div className="create-button"><button type="button" className="create-account">Create New Account</button></div>
+              <div className="create-button"><button type="button" onClick={openModal} id="create-new-account" className="create-account">Create New Account</button></div>
           </form>
       </>
     );

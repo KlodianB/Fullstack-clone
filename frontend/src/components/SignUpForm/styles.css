@@ -118,48 +118,30 @@ select.gender-select {
 }
 
 .gender-option {
-    display: inline-block;
+    display: flex;
+    justify-content: space-between;
     border: 1px solid #ccd0d5;
-    padding: 10px 40px 10px 10px; /* More padding on the right for the circle */
+    padding: 10px 10px 10px 10px;
     border-radius: 5px;
     position: relative;
-    margin-right: 10px; /* Space between options */
+    margin-right: 10px; 
     cursor: pointer;
     min-width: 1;
-    transition: background-color 0.2s;
+    color: black;
 }
-/* 
-.gender-container {
+
+/* .gender-container {
     border: 5px solid black;
 } */
 
 .gender-option-buttons {
     display: flex;
     justify-content: space-evenly;
-}
-
-.gender-option:hover {
-    background-color: #f2f3f5;
-}
-
-.gender-option input[type="radio"] {
-    display: none; /* Hide the default radio */
+    margin-right: -15px;
 }
 
 
-/* .gender-option input[type="radio"]:checked + span::before {
-    content: '';
-    position: absolute;
-    right: 10px; 
-    top: 50%;
-    transform: translateY(-50%);
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background-color: #1877f2;
-} */
 
-/* For date dropdowns */
 .birthday-select {
     flex: 1; 
     margin-right: 12px; 
@@ -199,6 +181,7 @@ select.gender-select {
     display: flex;
     justify-content:space-between; /* Space out the two inputs */
     margin-bottom: 0px;
+    margin-right: -5px;
 }
 
 #firstName {
@@ -206,7 +189,12 @@ margin-right: 20px;
 }
 
 #lastName {
-    margin-right: 20px;
+    margin-right: 25px;
+}
+
+#email {
+    /* border: 2px solid black; */
+    width: 355px;
 }
 
 
@@ -220,9 +208,14 @@ margin-right: 20px;
     font-size: 12px;
 }
 
+#customPronoun {
+    width: 355px;
+}
+
 #customGenderPronoun {
     margin-top: 10px;
     background-color: #f5f6f7;
+    width: 355px;
 }
 
 .disclaimer {
@@ -240,3 +233,4 @@ margin-right: 20px;
     color: #385898;
     text-decoration: none;
 }
+

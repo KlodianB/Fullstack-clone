@@ -1,20 +1,20 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import LoginFormPage from './components/LoginFormPage';
-import SignUpForm from './components/SignUpForm';
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import LoginFormPage from "./components/LoginPage";
+import SignUpForm from "./components/SignUpForm";
+import Navigation from "./components/Navigation";
+import Splash from "./components/splash";
 
 function App() {
   return (
-    <Switch>
-      <Route exact path="/">
-        <div>
-          <LoginFormPage />
-        </div>
-      </Route>
-      <Route path="/signup">
-        <SignUpForm />
-      </Route>
-    </Switch>
+    <>
+      <Navigation />
+        <Switch>
+          <Route exact path="/">
+            <Splash />
+          </Route>
+        </Switch>
+    </>
   );
 }
 

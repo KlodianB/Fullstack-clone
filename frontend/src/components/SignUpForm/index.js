@@ -2,27 +2,33 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import './styles.css'
+import { setModalDisplay } from "../../store/ui";
 
 const SignUpForm = () => {
+    const months = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
     const dispatch = useDispatch();
     const [email, setEmail] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [birthday, setBirthday] = useState("");
-    const [month, setMonth] = useState(1)
-    const [day, setDay] = useState(1)
-    const [year, setYear] = useState(1)
+    const [month, setMonth] = useState(months[new Date().getMonth()])
+    const [day, setDay] = useState(new Date().getDate())
+    const [year, setYear] = useState(new Date().getFullYear())
     const [gender, setGender] = useState("");
     const [customGenderPronoun, setCustomGenderPronoun] = useState(false)
     const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
     const [errors, setErrors] = useState([]);
 
     const currentYear = new Date().getFullYear();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (password === confirmPassword) {
+            if (customGenderPronoun) {
+                setGender(customGenderPronoun)
+            }
             setBirthday(new Date(`${year}-${month}-${day}`))
             setErrors([]);
             return dispatch(sessionActions.signup({ firstName, lastName, email, password, birthday, gender }))
@@ -38,15 +44,9 @@ const SignUpForm = () => {
             else if (data) setErrors([data]);
             else setErrors([res.statusText]);
             });
-        }
-        return setErrors(['Confirm Password field must be the same as the Password field']);
       };
 
       const renderMonthOptions = () => {
-        const months = [
-            "January", "February", "March", "April", "May", "June",
-            "July", "August", "September", "October", "November", "December"
-        ];
         return months.map((month, index) => (
             <option key={index} value={month}>{month}</option>
         ));
@@ -78,13 +78,16 @@ const SignUpForm = () => {
         return years;
     };
 
+    const onClose = () => {
+        dispatch(setModalDisplay())
+    }
       
       return (
         <>
         <form onSubmit={handleSubmit} className="signup-form" id="signupForm">
         <div className="signup-form-header">
             <h1 className="signup-header">Sign Up</h1>
-            <div className="close-signup-form"><button className="close-signup-form">x</button></div>
+            <div className="close-signup-form"><button onClick={onClose}className="close-signup-form">x</button></div>
         </div>
         <div className="sub-header-container">
         <h2 className="sub-header">It's quick and easy.</h2>
@@ -136,17 +139,6 @@ const SignUpForm = () => {
               required
               className="form-input"
             />
-{/* 
-        <label className="form-label" htmlFor="confirmPassword"></label>
-            <input
-              type="password"
-              id="confirmPassword"
-              value={confirmPassword}
-              placeholder="Confirm Password"
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-              className="form-input"
-            /> */}
         <div className="birthday-container">
     <span className="birthday-label">Birthday</span>
     <div className="date-dropdowns">
@@ -165,7 +157,7 @@ const SignUpForm = () => {
         <span className="gender-label">Gender</span>
             <div className="gender-container">
                 <div className="gender-option-buttons">
-                <label className="gender-option">
+                <label className="gender-option">Female
                     <input 
                         type="radio" 
                         id="femaleGender"
@@ -177,9 +169,8 @@ const SignUpForm = () => {
                             setCustomGenderPronoun(false)
                         }}
                     />
-                    Female
                 </label>
-                <label className="gender-option">
+                <label className="gender-option">Male
                     <input 
                         type="radio"
                         id="maleGender"
@@ -191,9 +182,8 @@ const SignUpForm = () => {
                             setCustomGenderPronoun(false)
                         }}
                     />
-                    Male
                 </label>
-                <label className="gender-option">
+                <label className="gender-option">Custom
                     <input 
                         type="radio" 
                         id="customGender"
@@ -201,11 +191,10 @@ const SignUpForm = () => {
                         value="Custom"
                         checked={gender === "Custom"}
                         onChange={(e) => {
-                            setGender(""); 
+                            setGender("Custom"); 
                             setCustomGenderPronoun(true);
                         }}
                     />
-                    Custom
                 </label>
                 </div>
                 {customGenderPronoun ? 
@@ -213,21 +202,31 @@ const SignUpForm = () => {
                     <select 
                     id="customPronoun"
                     defaultValue="Select your pronoun"
-                    onChange={(e) => setGender(e.target.value)}
+                    onChange={(e) => {
+                        setCustomGenderPronoun(e.target.value);
+                        if (e.target.value) {
+                            setGender("Custom");
+                        }
+                    }}
                     required
                     className="gender-select"
                     >
                         <option key="disabled" disabled={true}>Select your pronoun</option>
-                        <option value="He">He</option>
-                        <option value="She">She</option>
-                        <option value="They">They</option>
+                        <option value="She">She: "Wish her a happy birthday!"</option>
+                        <option value="He">He: "Wish him a happy birthday!"</option>
+                        <option value="They">They: "Wish them a happy birthday!"</option>
                     </select>
                         <p id="disclaimer">Your pronoun is visible to everyone.</p>
                         <input
                             type="text"
                             id="customGenderPronoun"
                             placeholder="Gender (optional)"
-                            onChange={(e) => setGender(e.target.value)}
+                            onChange={(e) => {
+                                setCustomGenderPronoun(e.target.value);
+                                if (e.target.value) {
+                                    setGender("Custom");
+                                }
+                            }}
                             required
                             className="form-input"
                         />
