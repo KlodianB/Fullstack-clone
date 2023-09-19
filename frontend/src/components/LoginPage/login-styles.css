@@ -1,0 +1,110 @@
+form {
+    max-width: 396px;
+    margin: 50px auto;
+    padding: 20px 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+
+.credentials {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+
+#login {
+    width: 100%;
+    padding: 10px;
+    background-color: #1877f2; 
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 14px;
+    font-weight: bold;
+}
+
+
+#create-new-account {
+    width: 60%;
+    padding: 10px;
+    background-color: #42b72a;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+
+#demo-login {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 14px;
+    border-bottom: #DADADA solid 1px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: #1877f2; 
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#demo-login:hover {
+    text-decoration: underline;
+}
+
+.create-button {
+    display: flex;
+    justify-content: center;
+}
+
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 50px;
+    text-align: center;
+}
+
+.fb-logo {
+    font-size: 60px;
+    color: #1877f2;
+    margin-bottom: 20px;
+}
+
+.login-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 50px;
+}
+
+form {
+    width: 100%; /* adjust as needed */
+    max-width: 396px;
+    padding: 20px 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
