@@ -77,7 +77,7 @@ return (
                 <div className="links">
                   <Link to="/" id="demo-login" onClick={handleDemoLogin} href="#demo-login">Demo Login</Link>
                 </div>
-                <div className="create-button"><button type="button" onClick={openModal} id="create-new-account" className="create-account">Create New Account</button></div>
+                <div className="create-button"><button type="button" onClick={openModal} id="create-new-account" className="create-account">Create new account</button></div>
               </form>
               </div>
             </div>

@@ -16,28 +16,34 @@ html, body {
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 6px;
-    font-size: 14px;
+    font-size: 17px;
+}
+
+::placeholder {
+    color: #90949c
 }
 
 
 #login {
     width: 100%;
-    padding: 10px;
+    padding: 12px 12px;
     background-color: #1877f2; 
     color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     font-size: 20px;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin-bottom: 14px;
     font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 10px;
 }
 
 
+
 #create-new-account {
-    width: 60%;
-    padding: 15px 10px 15px 10px;
+    width: 53%;
+    padding: 15px 15px 15px 15px;
     background-color: #42b72a;
     color: #fff;
     border: none;
@@ -47,7 +53,9 @@ html, body {
     transition: background-color 0.3s;
     font-weight: 550;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
+    margin-top: 5px
 }
+
 
 
 #demo-login {
@@ -55,13 +63,14 @@ html, body {
     justify-content: center;
     margin-bottom: 14px;
     border-bottom: #DADADA solid 1px;
-    padding-bottom: 10px;
+    padding-bottom: 25px;
     margin-bottom: 20px;
     color: #1877f2; 
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
 }
+
 
 #demo-login:hover {
     text-decoration: underline;
@@ -92,7 +101,7 @@ body, html {
     display: flex;  
     justify-content: center;  /* Centers the children horizontally */
     align-items: center;  /* Centers the children vertically */
-    gap: 60px;  /* Adds some space between login-left and login-right */
+    gap: 40px; 
     max-width: 1000px;  /* Set a max-width to control the proximity to center */
     margin: 0 auto;  /* Horizontally center the container */
     height: 710px;
@@ -103,24 +112,25 @@ body, html {
     flex: 0.5;
     display: flex;
     flex-direction: column;
-
     align-items: start;
-    padding: 0 40px;
+    /* padding: 0 40px; */
+    margin-bottom: 165px;
+    /* border: 2px solid black; */
 }
 
 .fb-logo {
     font-size: 55px; 
     color: #1877f2;
-    font-weight: bold;   
+    font-weight:900;   
+    margin-bottom: 10px;
 }
 
 .fb-connect-text {
-    font-size: 24px;  /* Adjusted size */
+    font-size: 28px;  /* Adjusted size */
     color: #1d2129;  /* Darker color used by Facebook for this text */
     font-weight: normal;
-    width: 400px;
-    line-height: 1.4;  /* Improved readability */
-    max-width: 480px;  /* Controls the text width for better layout */
+    width: 440px;
+    max-width: 440px; 
     font-weight: 500;
     line-height: 32px;
     font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
@@ -138,12 +148,14 @@ body, html {
 .login-form {
     width: 100%; 
     min-width: 396px;
-    max-width: 430px;
+    max-width: 396px;
     height: 350px;
-    padding: 15px 15px;
+    padding: 16px 16px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
     border-radius: 8px;
     background-color: white;
+    margin-bottom: 95px;
+    margin-left: 84px;
 }
 
 .footer {
