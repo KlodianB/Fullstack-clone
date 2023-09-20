@@ -33,7 +33,7 @@ class User < ApplicationRecord
     if user&.authenticate(password)
       return user
     else
-      return null
+      return nil
     end
   end
 
