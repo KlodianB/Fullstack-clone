@@ -9,11 +9,12 @@ const SignUpForm = () => {
         "Jan", "Feb", "Mar", "Apr", "May", "Jun",
         "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
     ];
+
     const dispatch = useDispatch();
     const [email, setEmail] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
-    const [birthday, setBirthday] = useState("");
+    const [birthday, setBirthday] = useState(new Date());
     const [month, setMonth] = useState(months[new Date().getMonth()])
     const [day, setDay] = useState(new Date().getDate())
     const [year, setYear] = useState(new Date().getFullYear())
@@ -23,13 +24,16 @@ const SignUpForm = () => {
     const [errors, setErrors] = useState([]);
 
     const currentYear = new Date().getFullYear();
+    const monthIndex = months.indexOf(month);
+    // const zeroPaddedMonth = monthIndex < 10 ? ('0' + monthIndex.toString()).slice(-2) : monthIndex.toString;
 
     const handleSubmit = (e) => {
+        console.log(year, monthIndex, day);
         e.preventDefault();
             if (customGenderPronoun) {
                 setGender(customGenderPronoun)
             }
-            setBirthday(new Date(`${year}-${month}-${day}`))
+            setBirthday(new Date(year, monthIndex, day).toJSON());
             setErrors([]);
             return dispatch(sessionActions.signup({ firstName, lastName, email, password, birthday, gender }))
             .catch(async (res) => {
@@ -54,12 +58,12 @@ const SignUpForm = () => {
 
     const renderDayOptions = () => {
         let maxDay = 31;
-        if (month === "February") {
+        if (month === "Feb") {
             maxDay = 28;
             if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) { // Leap year
                 maxDay = 29;
             }
-        } else if (["April", "June", "September", "November"].includes(month)) {
+        } else if (["Apr", "Jun", "Sep", "Nov"].includes(month)) {
             maxDay = 30;
         }
 

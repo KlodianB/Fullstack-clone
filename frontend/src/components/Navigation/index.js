@@ -21,15 +21,31 @@ function Navigation() {
       </>
     );
   }
-
-  return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
-        {sessionLinks}
-      </li>
-    </ul>
-  );
+    return (
+        <div className="navbar-container">
+          <NavLink className="logo" exact to="/">FB</NavLink> {/* Simple text logo. Replace with an image for a more realistic look. */}
+          <div className="search-container">
+            <input type="text" placeholder="Search" />
+            <i className="fa-solid fa-search"></i> {/* FontAwesome search icon */}
+          </div>
+          <ul>
+            <li>
+              <NavLink exact to="/">Home</NavLink>
+            </li>
+            <li>
+              <i className="fa-solid fa-bell"></i> {/* Notification icon */}
+            </li>
+            <li>
+              <i className="fa-solid fa-comment-alt"></i> {/* Message icon */}
+            </li>
+            <li>
+              {sessionLinks}
+            </li>
+          </ul>
+        </div>
+      );
+      
+    
 }
 
 export default Navigation;
