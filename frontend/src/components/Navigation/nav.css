@@ -1,0 +1,96 @@
+/* Navigation Styling */
+.navbar-container {
+  background-color: #1877f2;
+  padding: 10px 20px;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container ul {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  padding: 0;
+}
+
+.navbar-container li {
+  margin: 0 10px;
+}
+
+.navbar-container a {
+  color: white;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.navbar-container a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Profile Button Styling */
+.fa-user-circle {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  background-color: black;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  list-style-type: none;
+  padding: 10px 0;
+  min-width: 150px;
+}
+
+.profile-dropdown li {
+  padding: 8px 20px;
+  cursor: pointer;
+}
+
+.profile-dropdown li:hover {
+  background-color: #f5f5f5;
+}
+
+/* Search Bar Styling */
+.search-container {
+  position: relative;
+  margin-right: 20px;
+}
+
+.search-container input {
+  padding: 5px 30px 5px 10px;
+  border: none;
+  border-radius: 20px;
+  background-color: #e4e6eb; 
+}
+
+.search-container .fa-search {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #65676b; 
+  cursor: pointer;
+}
+
+/* Icon Styling */
+.navbar-container i {
+  margin-left: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.navbar-container i:hover {
+  color: #B0B3B8; 
+}

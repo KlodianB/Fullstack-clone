@@ -1,0 +1,233 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+}
+
+.signup-form {
+    width: 432px;
+    margin: 0;
+    padding: 20px;
+    height: 100%;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.signup-form-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.signup-header {
+    font-size: 32px;
+}
+
+.sub-header {
+    font-size: 15px;
+    color: #606770;
+    font-family: SFProText-Regular, Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    margin-top: 10px;
+    border-width: 1px;
+    border-bottom: #DADADA solid 1px;
+    padding-bottom: 5px;
+}
+
+.close-signup-form {
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+
+.error-list {
+    list-style-type: none;
+    margin-bottom: 20px;
+    color: red;
+    padding-left: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+
+#firstName, #lastName, #email, #password, #customGenderPronoun {
+    background-color: #F5F6F7;
+}
+
+.form-input,
+.birthday-select:focus {
+    border-color: #1877f2;
+    outline: none;
+}
+
+#firstName, #lastName, #email, #password, #customGenderPronoun, 
+.birthday-select, .gender-select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccd0d5;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;;
+}
+
+#customPronoun {
+    width: 392px;
+}
+
+
+.radio {
+    margin-right: 4px;
+}
+
+.gender-option {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.signup-btn {
+    width: 50%;
+    background-color: #00a400;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 0;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-left: 25%;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+/* .signup-btn:hover {
+    background-color: #165dbb;
+} */
+
+/* For the gender dropdown when custom is selected */
+.gender-select {
+    margin-top: 10px;
+    display: block;
+}
+
+.gender-option {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ccd0d5;
+    padding: 10px 10px 10px 10px;
+    border-radius: 5px;
+    position: relative;
+    margin-right: 10px; 
+    cursor: pointer;
+    min-width: 1;
+    color: black;
+}
+
+/* .gender-container {
+    border: 5px solid black;
+} */
+
+.gender-option-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    margin-right: -15px;
+}
+
+
+
+.birthday-select {
+    flex: 1; 
+    margin-right: 12px; 
+}
+
+
+.birthday-container {
+    margin-bottom: 15px;
+}
+
+.birthday-label {
+    display: block;
+    margin-bottom: 0px;
+    color: #929395;
+    font-size: 12px;
+    margin-top: 13px;
+}
+
+.gender-label {
+    display: block;
+    margin-bottom: 5px;
+    color: #929395;
+    font-size: 12px;
+}
+
+.date-dropdowns {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.birthday-select:last-child {
+    margin-right: 0; /* no margin for the last dropdown */
+}
+
+.name-container {
+    display: flex;
+    justify-content:space-between; /* Space out the two inputs */
+    margin-bottom: 0px;
+    margin-right: -5px;
+}
+
+#firstName {
+margin-right: 20px;
+}
+
+#lastName {
+    margin-right: 25px;
+}
+
+#email, #customGenderPronoun {
+    width: 392px;
+}
+
+
+.form-input {
+    width: calc(50% - 10px); /* Half of the width minus half of the gap between inputs */
+}
+
+#disclaimer {
+    margin-top: 5px;
+    color: #606770;
+    font-size: 12px;
+}
+
+
+#customGenderPronoun {
+    margin-top: 10px;
+}
+
+.disclaimer {
+    font-size: 11px;
+    color: #777;
+    font-family: Helvetica, Arial, sans-serif;
+    line-height: 1.34
+}
+
+#top-disclaimer {
+    margin-top: 10px;
+}
+
+#learn-more, #terms, #privacy-policy, #cookies-policy {
+    color: #385898;
+    text-decoration: none;
+}
+
+

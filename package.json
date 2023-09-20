@@ -16,7 +16,7 @@
   "author": "",
   "license": "ISC",
   "engines": {
-    "node": "16.x"
+  "node": "v16.20.1"
   },
   "bugs": {
     "url": "https://github.com/KlodianB/Fullstack-clone/issues"
