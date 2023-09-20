@@ -7,7 +7,6 @@ import { getModalDisplay, setModalDisplay } from "../../store/ui";
 import { Link } from 'react-router-dom'
 
 function LoginForm() {
-  console.log('hi')
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const sessionUser = useSelector(state => state.session.user);
@@ -44,7 +43,7 @@ function LoginForm() {
 
 
 return (
-  <div class="page-wrapper">
+  <div className="page-wrapper">
       <div className="login-page">
         <div className="login-content">
           <div className="login-left">

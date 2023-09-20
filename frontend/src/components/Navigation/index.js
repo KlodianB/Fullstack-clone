@@ -16,7 +16,6 @@ function Navigation() {
   } else {
     sessionLinks = (
       <>
-
         <NavLink to="/signup">Sign Up</NavLink>
       </>
     );
