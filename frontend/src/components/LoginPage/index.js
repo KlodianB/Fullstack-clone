@@ -7,6 +7,7 @@ import { getModalDisplay, setModalDisplay } from "../../store/ui";
 import { Link } from 'react-router-dom'
 
 function LoginForm() {
+  console.log('hi')
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const sessionUser = useSelector(state => state.session.user);
