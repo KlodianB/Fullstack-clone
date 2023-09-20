@@ -4,11 +4,13 @@ import LoginFormPage from "./components/LoginPage";
 import SignUpForm from "./components/SignUpForm";
 import Navigation from "./components/Navigation";
 import Splash from "./components/splash";
+import { useSelector } from "react-redux";
 
 function App() {
+  const sessionUser = useSelector(state => state.session.user);
   return (
     <>
-      <Navigation />
+      {sessionUser ? <Navigation /> : null}
         <Switch>
           <Route exact path="/">
             <Splash />

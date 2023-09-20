@@ -160,6 +160,7 @@ const SignUpForm = () => {
                 <label className="gender-option">Female
                     <input 
                         type="radio" 
+                        className="radio"
                         id="femaleGender"
                         name="gender"
                         value="Female"
@@ -173,6 +174,7 @@ const SignUpForm = () => {
                 <label className="gender-option">Male
                     <input 
                         type="radio"
+                        className="radio"
                         id="maleGender"
                         name="gender"
                         value="Male"
@@ -186,6 +188,7 @@ const SignUpForm = () => {
                 <label className="gender-option">Custom
                     <input 
                         type="radio" 
+                        className="radio"
                         id="customGender"
                         name="gender"
                         value="Custom"
