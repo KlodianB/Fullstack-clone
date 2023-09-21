@@ -17,8 +17,8 @@ function App() {
           <Route exact path="/">
             <Splash />
           </Route>
-          <Route path="/users/:userid">
-            <ProfilePage />
+          <Route path="/users/:userId">
+            {sessionUser ? <ProfilePage /> : <Splash />}
           </Route>
         </Switch>
     </>
