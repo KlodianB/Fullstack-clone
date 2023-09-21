@@ -5,15 +5,20 @@ import SignUpForm from "./components/SignUpForm";
 import Navigation from "./components/Navigation";
 import Splash from "./components/splash";
 import { useSelector } from "react-redux";
+import ProfilePage from "./components/profile";
 
 function App() {
   const sessionUser = useSelector(state => state.session.user);
+  
   return (
     <>
       {sessionUser ? <Navigation /> : null}
         <Switch>
           <Route exact path="/">
             <Splash />
+          </Route>
+          <Route path="/users/:userid">
+            <ProfilePage />
           </Route>
         </Switch>
     </>
