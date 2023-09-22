@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { useState, useEffect } from 'react';
 import { fetchUser } from '../../store/users';
+import ProfileHeader from './profileHeader';
 
 const ProfilePage = () => {
     const {userId} = useParams();
@@ -15,9 +16,11 @@ const ProfilePage = () => {
 
 
     return (
-        <>
-        {user ? (<p>{user.firstName}</p>) : null}
-        </>
+        <div className='page-container'>
+        {user ? (<p className='test'>{user.firstName}</p>) : null}
+        <ProfileHeader userdata={user}/>
+
+        </div>
     )
 
 }

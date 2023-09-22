@@ -1,4 +1,34 @@
-.profile-page {
+.test {
+    font-size: 200px;
+}
+
+.test-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .profile-page {
     font-family: Arial, sans-serif;
     width: 600px;
     margin: 0 auto;
@@ -29,4 +59,4 @@
     border: 1px solid #e0e0e0;
     padding: 10px;
     border-radius: 5px;
-};
+}; */
