@@ -17,7 +17,6 @@ const ProfilePage = () => {
 
     return (
         <div className='page-container'>
-        {user ? (<p className='test'>{user.firstName}</p>) : null}
         <ProfileHeader userdata={user}/>
 
         </div>

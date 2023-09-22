@@ -9,7 +9,6 @@ const {userId} = useParams();
 
 return (
     <div className="header-container">
-        <p className="blah">{user && user.lastName}</p>
         <div className="cover-photo-container">
             <div className="cover-photo">
             </div>
@@ -17,17 +16,19 @@ return (
             </div> */}
         </div>
 
-        <div className="user-info">
+        <div className="user-info-container">
             <div className="profile-photo">
                 {/* <div className="profile-photo-edit">   Only render if currentUser id = userId from params
                 </div> */}
             </div>
             <div className="users-name">
+                {user?.firstName} {user?.lastName}
             </div>
             {/* <div>(edit buttons that render only if the currentUser id = userId from params)</div> */}
         </div>
 
         <div className="tabs">
+            <span className='tab-options'>Posts &nbsp; About &nbsp; Friends &nbsp; Photos</span>
         </div>
     </div>
 )
