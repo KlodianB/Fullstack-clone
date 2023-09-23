@@ -8,6 +8,7 @@
     position: relative;
     margin-top: 55px;
     border: 2px solid black;
+    background: linear-gradient(to bottom, #544c47, white 55%);
 }
 
 .cover-photo-container {
@@ -16,12 +17,16 @@
     border: 2px solid red;
     position: relative;
     z-index: 1;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
 
 .cover-photo {
     width: 100%;
     height: 100%;
     background-color: #e9ebee; /* A placeholder background color */
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
 
 .user-info-container {

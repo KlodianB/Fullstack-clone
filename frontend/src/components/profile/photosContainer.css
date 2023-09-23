@@ -1,0 +1,35 @@
+.photos-container {
+    width: 100%; /* or your desired width */
+    background-color: #fff;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); /* optional */
+    margin-top: 10px; /* or your desired margin */
+}
+
+.photos-header {
+    font-size: 20px;
+    font-weight:600;
+    padding-left: 12px;
+    padding-top: 13px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.photos-grid {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+}
+
+.photo-item {
+    width: 90px; /* or your desired width */
+    height: 90px; /* or your desired height */
+    object-fit: cover;
+    margin: 5px;
+}
+
+.view-all {
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    color: #385898; /* Facebook's link color */
+    cursor: pointer;
+}

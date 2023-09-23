@@ -1,3 +1,35 @@
+.page-container {
+    background-color: #f0f2f5;
+}
+
+.page-body {
+    margin: 0 auto;
+    margin-top: 14px;
+    border: 2px solid green;
+    width: 82.25%;
+    display: flex;
+    gap: 17px;
+    height: 600px;
+}
+
+.bio {
+    max-width: 490px;
+    min-width: 490px;
+    border: 1px solid red;
+}
+
+.users-post-index {
+    border: 1px solid blue;
+    width: 100%;
+}
+
+
+.test {
+    padding: 13px;
+}
+
+
+
 /* .test {
     font-size: 200px;
 }

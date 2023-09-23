@@ -4,6 +4,9 @@ import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { useState, useEffect } from 'react';
 import { fetchUser } from '../../store/users';
 import ProfileHeader from './profileHeader';
+import Bio from './bio';
+import PhotosContainer from './photosContainer';
+import FriendsContainer from './friendsContainer';
 
 const ProfilePage = () => {
     const {userId} = useParams();
@@ -17,8 +20,19 @@ const ProfilePage = () => {
 
     return (
         <div className='page-container'>
-        <ProfileHeader userdata={user}/>
-
+            <div className='page-header'>
+                <ProfileHeader userdata={user}/>
+            </div>
+            <div className='page-body'>
+                <div className='bio'>
+                    <Bio />
+                    <PhotosContainer />
+                    <FriendsContainer />
+                </div>
+                <div className='users-post-index'>
+                    <p className='test'>posts coming soon</p>
+                </div>
+            </div>
         </div>
     )
 
