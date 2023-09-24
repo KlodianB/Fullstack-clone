@@ -51,6 +51,26 @@
     z-index: 2;
 }
 
+.editProfile {
+    margin-left: auto;
+    margin-right: 17px;
+    margin-bottom: 28px;
+}
+
+.editProfile button {
+    font-size: 15px;
+    padding: 10px 13px;
+    width: 123px;
+    max-height: 35px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
+    cursor: pointer;
+    border: none;
+    background-color: #e4e6ea;
+    color: #050505;
+    border-radius: 6px;
+    font-weight: 550; 
+}
+
 .users-name {
     font-size: 31px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;

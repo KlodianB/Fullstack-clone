@@ -45,10 +45,8 @@ const usersReducer = (state = {}, action) => {
         case SET_USER:
             newState[action.user.id] = action.user;
             return newState;
-            break;
         default:
             return state
-            break;
     }
 }
 

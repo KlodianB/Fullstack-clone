@@ -18,13 +18,44 @@
     padding-top: 10px;
     font-size: 15px;
     letter-spacing: 0.1px;
+    font-weight: 400;
 }
 
 .icon {
     margin-right: 5px;
 }
 
-.intro-item:last-child {
-    padding-bottom: 10px;
+
+#intro-edit button {
+    padding: 8px 16px;
+    margin-top: 10px;
+    font-size: 15px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
+    cursor: pointer;
+    border: none;
+    background-color: #e4e6ea; /* Light Gray Background */
+    color: #050505;
+    border-radius: 6px; /* Rounded Corners */
+    width: 95%; /* Full-width button */
+    font-weight: 550; /* Bold Text */
+    text-align: center; /* Centered Text */
 }
 
+#intro-edit { 
+    text-align: center;
+}
+
+#intro-edit button:hover {
+    background-color: #d8dade; /* Slightly Darker Gray on hover */
+}
+
+.intro-item:last-child {
+    padding-bottom: 10px;
+    margin-right: 10px;
+}
+
+.userInfo {
+    font-weight: 550;
+    font-size: 15px;
+    letter-spacing: 0.1px;
+}

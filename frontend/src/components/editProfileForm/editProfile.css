@@ -1,0 +1,23 @@
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+label {
+    margin-bottom: 10px;
+}
+
+.submit-edit {
+    cursor: pointer;
+    background-color: #ebf5ff;
+    color: #015fc7;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.submit-edit:hover {
+    background-color: #dfe9f2;
+}

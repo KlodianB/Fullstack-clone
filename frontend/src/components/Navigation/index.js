@@ -16,31 +16,27 @@ function Navigation() {
   } else {
     sessionLinks = (
       <>
-        <NavLink to="/signup">Sign Up</NavLink>
+        <NavLink to="/">Sign Up</NavLink>
       </>
     );
   }
     return (
         <div className="navbar-container">
-          <NavLink className="logo" exact to="/">FB</NavLink> {/* Simple text logo. Replace with an image for a more realistic look. */}
-          <div className="search-container">
-            <input type="text" placeholder="Search" />
-            <i className="fa-solid fa-search"></i> {/* FontAwesome search icon */}
+          <div className='left-nav'>
+            <div className='logo-container'>
+              <NavLink className="logo" exact to="/">FB</NavLink> {/* Simple text logo. Replace with an image for a more realistic look. */}
+            </div>
+            <div className="search-container">
+              <input type="text" placeholder="Search" />
+              <i className="fa-solid fa-search"></i> {/* FontAwesome search icon */}
+            </div>
           </div>
-          <ul>
-            <li>
-              <NavLink exact to="/">Home</NavLink>
-            </li>
-            <li>
-              <i className="fa-solid fa-bell"></i> {/* Notification icon */}
-            </li>
-            <li>
-              <i className="fa-solid fa-comment-alt"></i> {/* Message icon */}
-            </li>
-            <li>
+          <div className='middle'>
+          <i className="fa-solid fa-house"></i>
+          </div>
+          <div className='right-nav'>
               {sessionLinks}
-            </li>
-          </ul>
+          </div>
         </div>
       );
       

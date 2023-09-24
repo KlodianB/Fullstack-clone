@@ -25,7 +25,7 @@ const ProfilePage = () => {
             </div>
             <div className='page-body'>
                 <div className='bio'>
-                    <Bio />
+                    <Bio userdata={user}/>
                     <PhotosContainer />
                     <FriendsContainer />
                 </div>

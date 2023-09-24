@@ -1,6 +1,6 @@
 import SignUpForm from ".";
 import { Modal } from "../context/Modal";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 
 const SignupModal = () => {
