@@ -55,7 +55,7 @@ const Bio = ({userdata}) => {
                 </div>
                 : null}
                 {modalDisplay && (
-                <Modal onClose={() => dispatch(setModalDisplay(!modalDisplay))}>
+                <Modal onClose={() => dispatch(setModalDisplay(false))}>
                     <EditDetailsForm userdata={user} />
                 </Modal>
             )}

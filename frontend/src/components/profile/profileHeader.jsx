@@ -1,20 +1,19 @@
 import './profileHeader.css'
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import EditProfile from '../editProfileForm/EditProfile';
 import { useState } from 'react';
 import { Modal } from '../context/Modal';
+import { getModalDisplay, setModalDisplay } from '../../store/ui';
 
 const ProfileHeader = ({userdata}) => {
 const user = userdata
 const sessionUser = useSelector(state => state.session.user);
 const {userId} = useParams();
+const modalDisplay = useSelector(getModalDisplay);
+const dispatch = useDispatch();
 
-const [isEditing, setIsEditing] = useState(false);
 
-const handleEdit = () => {
-    setIsEditing(false);
-};
 
 return (
     <div className="header-container">
@@ -29,12 +28,15 @@ return (
             </div>
             <div className="editProfile">
             {sessionUser?.id == userId && (
-                    <button className="editProfile" onClick={() => setIsEditing(true)}> <i class="fa-solid fa-pencil"></i> Edit profile</button>
+                    <button className="editProfile" onClick={() => {
+                        debugger
+                        dispatch(setModalDisplay(true))
+                    }}> <i class="fa-solid fa-pencil"></i> Edit profile</button>
                 )}
             </div>
-            {isEditing && (
-                <Modal onClose={() => setIsEditing(false)}>
-                    <EditProfile userdata={user} handleEdit={handleEdit} />
+            {modalDisplay && (
+                <Modal onClose={() => dispatch(setModalDisplay(false))}>
+                    <EditProfile userdata={user} />
                 </Modal>
             )}
         </div>
