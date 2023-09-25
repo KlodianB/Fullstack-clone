@@ -12,6 +12,12 @@
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  bio             :string
+#  workplace       :string
+#  education       :string
+#  profile_picture :string
+#  cover_photo     :string
+#  residence       :string
 #
 class User < ApplicationRecord
   validates :email,
@@ -22,6 +28,15 @@ class User < ApplicationRecord
   validates :first_name, :last_name, :gender, :birthday, presence: true 
   validates :session_token, presence: true, uniqueness: true
   validates :password, length: { minimum: 6 }, allow_nil: true
+
+  has_many :posts, 
+  foreign_key: :author_id,
+  class_name: 'Post'
+
+  has_many :feed_posts, 
+  foreign_key: :feed_id,
+  class_name: 'Post'
+
   has_secure_password
 
   before_validation :ensure_session_token
