@@ -20,13 +20,11 @@ const handleEdit = (updatedData) => {
 return (
     <div className="header-container">
         <div className="cover-photo-container">
-            <div className="cover-photo">
-            </div>
+            <img src={user?.coverPhoto} alt="" className="cover-photo" />
         </div>
 
         <div className="user-info-container">
-            <div className="profile-photo">
-            </div>
+        <img src={user?.profilePicture} alt="" className="profile-photo"/>
             <div className="users-name">
                 {user?.firstName} {user?.lastName}
             </div>

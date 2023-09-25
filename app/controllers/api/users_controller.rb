@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-  wrap_parameters include: User.attribute_names + ['password', 'firstName', 'lastName']
+  wrap_parameters include: User.attribute_names + ['password', 'firstName', 'lastName', 'profilePicture', 'coverPhoto']
 
   def index 
     @users = User.all 
@@ -52,6 +52,6 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :password, :birthday, :gender)
+    params.require(:user).permit(:email, :first_name, :last_name, :password, :birthday, :gender, :bio, :workplace, :education, :profile_picture, :cover_photo, :residence)
   end
 end

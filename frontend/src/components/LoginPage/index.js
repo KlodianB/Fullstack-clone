@@ -34,7 +34,7 @@ function LoginForm() {
   };
 
   const handleDemoLogin = (e) => {
-    dispatch(sessionActions.login( {email: 'email@email.com', password: 'password'}))
+    dispatch(sessionActions.login( {email: 'testingstuff@gmail.com', password: 'password'}))
   }
 
   const openModal = (e) => {

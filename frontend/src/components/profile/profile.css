@@ -1,5 +1,5 @@
 .page-container {
-    background-color: #f0f2f5;
+    background-color: white;
 }
 
 .page-body {
@@ -16,6 +16,8 @@
     max-width: 490px;
     min-width: 490px;
     border: 1px solid red;
+    display: flex;
+    flex-direction: column;
 }
 
 .users-post-index {
@@ -24,9 +26,6 @@
 }
 
 
-.test {
-    padding: 13px;
-}
 
 
 

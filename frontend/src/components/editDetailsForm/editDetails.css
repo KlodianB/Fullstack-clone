@@ -1,48 +1,64 @@
-/* #modal-content {
-    background: #ffffff;
+.edit-form {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 6px;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    width: 400px; 
-    margin: auto;
+    width: 500px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px; 
-}
-
-label {
-    font-size: 14px;
-    color: #4b4f56;
-    font-weight: 600;
-}
-
-input, select, textarea {
+.edit-input,
+.edit-textarea {
+    width: 100%;
     padding: 10px;
-    border: 1px solid #ccd0d5;
-    border-radius: 6px;
-    font-size: 14px;
-    color: #1d2129;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
-
-button {
-    background-color: #1877f2;
-    color: #ffffff;
-    padding: 10px 15px;
+.edit-label {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
+    font-size: 17px;
+    display: block;
+    margin-bottom: 5px;
+}
+.edit-btn {
+    background-color: #4267b2;
+    color: white;
+    padding: 10px 20px;
     border: none;
-    border-radius: 6px;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 14px;
-    font-weight: 600;
+}
+.edit-btn:hover {
+    background-color: #365899;
+}
+.edit-textarea {
+    height: 80px;
+    resize: vertical;
 }
 
-button:hover {
-    background-color: #1659cf;
+.edit-form-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    border-bottom: 1px solid black;
+    padding-bottom: 15px;
+    min-height: 20px;
 }
 
-textarea {
-    resize: vertical; 
-    height: 80px; 
-} */
+.edit-header {
+    margin: 0 auto;
+}
+
+.close-edit-form {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+}
+
+.close-edit-form-button {
+    border: none;
+    background-color: white;
+}
+
+

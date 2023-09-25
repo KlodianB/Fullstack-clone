@@ -29,19 +29,19 @@ const Bio = ({userdata}) => {
         <div className="intro-container">
             <div className="intro-header">Intro</div>
                 <div className="intro-item">
-                {user ? <><span className="icon">🎂</span> Birthday:  <span className='userInfo'>{birthdayFormat(user.birthday)}</span></> : null}
+                    <span className="userBio"></span> {user?.bio}
                 </div>
                 <div className="intro-item">
-                    <span className="icon">🏠</span> Lives in New York
+                {user ? <><span className="icon"><i class="fa-solid fa-cake-candles fa-lg"></i></span> &nbsp; Birthday:  <span className='userInfo'>{birthdayFormat(user.birthday)}</span></> : null}
                 </div>
                 <div className="intro-item">
-                    <span className="gender"><i className="fa-solid fa-venus-mars"></i></span> Gender: <span className='userInfo'>{user?.gender}</span>
+                    <span className="icon"><i class="fa-solid fa-house-chimney fa-lg"></i></span> &nbsp;Lives in <span className='userInfo'>{user?.residence}</span>
                 </div>
                 <div className="intro-item">
-                    <span className="userBio">🏠</span> bio goes here {user?.bio}
+                    <span className="icon"><i className="fa-solid fa-venus-mars fa-lg"></i></span>&nbsp;Gender: <span className='userInfo'>{user?.gender}</span>
                 </div>
                 <div className="intro-item">
-                    <span className="icon">🏢</span> Works at XYZ Corp
+                    <span className="icon"><i class="fa-solid fa-briefcase fa-lg"></i></span> &nbsp; Works at <span className='userInfo'>{user?.workplace}</span>
                 </div>
                 {sessionUser.id == userId ? 
         <div className="intro-item" id="intro-edit">

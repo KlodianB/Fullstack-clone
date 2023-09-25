@@ -1,8 +1,10 @@
 .photos-container {
     width: 100%; /* or your desired width */
     background-color: #fff;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); /* optional */
-    margin-top: 10px; /* or your desired margin */
+    box-shadow: 0px 4px 6px -2px rgba(0, 0, 0, 0.1);
+    border-radius: 7.5px;
+    margin-top: 15px; 
+    border-top:0.1px solid #f5f5f5;
 }
 
 .photos-header {
@@ -11,6 +13,7 @@
     padding-left: 12px;
     padding-top: 13px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    border-top:#385898;
 }
 
 .photos-grid {
