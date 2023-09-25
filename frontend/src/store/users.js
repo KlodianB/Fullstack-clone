@@ -31,8 +31,8 @@ export const updateUser = ( userId, updatedUser) => async dispatch => {
     });
 
     if (res.ok) {
-        const updatedUserInfo = await res.json();
-        dispatch(setUser(updatedUserInfo))
+        const data = await res.json();
+        dispatch(setUser(data.user))
     } else {
         const error = await res.json();
         throw error;

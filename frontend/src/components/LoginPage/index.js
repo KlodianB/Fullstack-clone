@@ -12,7 +12,7 @@ function LoginForm() {
   const sessionUser = useSelector(state => state.session.user);
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
-  const modalDisplay = useSelector(getModalDisplay)
+  const modalDisplay = useSelector(getModalDisplay);
 
   const handleSubmit = (e) => {
     e.preventDefault();

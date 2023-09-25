@@ -1,35 +1,30 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setModalDisplay } from "../../store/ui";
+import { getModalDisplay, setModalDisplay } from "../../store/ui";
 import { updateUser } from "../../store/users";
 import './editDetails.css'
+import { useSelector } from "react-redux";
 
-const EditDetailsForm = ({userdata}) => {
+const EditDetailsForm = ({userdata, onSave}) => {
 
     const user = userdata
     const dispatch = useDispatch();
-    const [email, setEmail] = useState(user.email);
     const [firstName, setFirstName] = useState(user.firstName);
     const [lastName, setLastName] = useState(user.lastName);
-    const [gender, setGender] = useState(user.gender);
-    const [birthday, setBirthday] = useState(user.birthday)
-    const [customGenderPronoun, setCustomGenderPronoun] = useState(false)
     const [bio, setBio] = useState(userdata.bio || "");
-    const [workplace, setWorkplace] = useState(userdata.workplace || "");
-    const [education, setEducation] = useState(userdata.education || "");
-    const [residence, setResidence] = useState(userdata.residence || "");
+    const [workplace, setWorkplace] = useState(user.workplace || "");
+    const [education, setEducation] = useState(user.education || "");
+    const [residence, setResidence] = useState(user.residence || "");
     const [errors, setErrors] = useState([]);
+    const modalDisplay = useSelector(getModalDisplay);
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (customGenderPronoun) {
-            setGender(customGenderPronoun)
-        }
         setErrors([]);
         dispatch(updateUser(user.id, { ...user, firstName, lastName, bio, workplace, education, residence  }))
             .then(() => {
-                dispatch(setModalDisplay()) // Close the modal after a successful update
+                dispatch(setModalDisplay(!modalDisplay)) // Close the modal after a successful update
             })
             .catch(async (res) => {
                 let data;

@@ -12,8 +12,7 @@ const {userId} = useParams();
 
 const [isEditing, setIsEditing] = useState(false);
 
-const handleEdit = (updatedData) => {
-    // Handle the edited data here (update Redux store or make API call)
+const handleEdit = () => {
     setIsEditing(false);
 };
 
@@ -35,7 +34,7 @@ return (
             </div>
             {isEditing && (
                 <Modal onClose={() => setIsEditing(false)}>
-                    <EditProfile handleEdit={handleEdit} />
+                    <EditProfile userdata={user} handleEdit={handleEdit} />
                 </Modal>
             )}
         </div>
