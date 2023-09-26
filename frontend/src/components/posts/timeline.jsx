@@ -8,6 +8,7 @@ import { useState } from 'react';
 import CreatePostForm from './createPostForm';
 import { Modal } from '../context/Modal';
 import { deletePost } from '../../store/posts';
+import EditPostForm from './editPostForm';
 
 
 const Timeline = ({userdata}) => {
@@ -17,10 +18,13 @@ const Timeline = ({userdata}) => {
     const posts = useSelector(getPosts)
     const sortedPosts = [...posts].reverse();
     const sessionUser = useSelector(state => state.session.user);
+
     const [showCreatePostModal, setShowCreatePostModal] = useState(false);
 
     const [isCommenting, setIsCommenting] = useState(null)
     const [comment, setComment] = useState({})
+
+    const [showEditForm, setShowEditForm] = useState(false);
 
     const [showDropdownPostId, setShowDropdownPostId] = useState(null);
     const handleDropdownClick = (postId) => {
@@ -38,11 +42,13 @@ const Timeline = ({userdata}) => {
 
     const handleCloseEditForm = () => {
         setShowDropdownPostId(null)
+        setShowEditForm(false)
     }
 
     const handleClose = () => {
         setShowCreatePostModal(false)
     }
+
 
     const submitComment = () => {
         setIsCommenting(null);
@@ -106,13 +112,18 @@ const Timeline = ({userdata}) => {
                                     <i className="fa-solid fa-ellipsis fa-lg"></i>
                                     {showDropdownPostId === post.id && (
                                         <div className='dropdown'>
-                                            <button>Edit Post</button>
+                                            <button onClick={() => setShowEditForm(true)}>Edit Post</button>
                                             <button onClick={handleDelete}>Delete Post</button>
                                         </div>
                                     )}
                                 </div>
                                 : null}
                             </div>
+                            {showEditForm && 
+                            <Modal onClose={handleCloseEditForm}>
+                                <EditPostForm onClose={handleCloseEditForm} post={post}/>
+                            </Modal>
+                            }
                             <div className='post-content'>
                                 {post.body}
                             </div>
