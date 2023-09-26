@@ -29,11 +29,11 @@ class User < ApplicationRecord
   validates :session_token, presence: true, uniqueness: true
   validates :password, length: { minimum: 6 }, allow_nil: true
 
-  has_many :posts, 
+  has_many :created_posts, 
   foreign_key: :author_id,
   class_name: 'Post'
 
-  has_many :feed_posts, 
+  has_many :posts, 
   foreign_key: :feed_id,
   class_name: 'Post'
 

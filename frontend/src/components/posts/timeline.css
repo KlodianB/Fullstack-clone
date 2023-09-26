@@ -1,0 +1,75 @@
+.timeline {
+    width: 100%;
+    margin: auto;
+    font-family: Arial, sans-serif;
+}
+  
+.create-post-container {
+    background-color: #f5f6f7;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+  
+.timeline-posts {
+    list-style: none;
+    padding: 0;
+}
+  
+.post-container {
+    background-color: #fff;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+  
+.post-header,
+.post-footer {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+.post-info {
+    display: flex;
+    align-items: center;
+}
+  
+.author-info {
+    display: flex;
+    align-items: center;
+}
+  
+.author-pfp,
+.feedUser-pfp {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    object-fit: cover;
+    border: 1px solid black;
+}
+
+.author-name,
+.feedUser-name {
+    margin-left: 10px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+  
+.post-content {
+    padding: 15px;
+}
+  
+.like-container,
+.add-comment-textfield {
+    display: flex;
+    align-items: center;
+    margin-left: 10px; /* Adjusted to keep uniformity in spacing */
+}
+
+.fa-arrow-right {
+    margin: 0 5px;
+    color: #65676b;
+}

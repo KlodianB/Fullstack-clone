@@ -22,21 +22,12 @@ const EditDetailsForm = ({userdata, onSave}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
+        debugger
         dispatch(updateUser(user.id, { ...user, firstName, lastName, bio, workplace, education, residence  }))
             .then(() => {
                 dispatch(setModalDisplay(!modalDisplay)) // Close the modal after a successful update
             })
-            .catch(async (res) => {
-                let data;
-                try {
-                    data = await res.clone().json();
-                } catch {
-                    data = await res.text();
-                }
-                if (data?.errors) setErrors(data.errors);
-                else if (data) setErrors([data]);
-                else setErrors([res.statusText]);
-            });
+            
     };
     
 
