@@ -29,7 +29,7 @@ return (
             </div>
             <div className="editProfile">
             {sessionUser?.id == userId && (
-                    <button className="editProfile" onClick={() => setIsEditing(true)}> <i class="fa-solid fa-pencil"></i> Edit profile</button>
+                    <button className="editProfile" onClick={() => setIsEditing(true)}> <i className="fa-solid fa-pencil"></i> Edit profile</button>
                 )}
             </div>
             {isEditing && (

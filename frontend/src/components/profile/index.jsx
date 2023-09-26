@@ -10,6 +10,7 @@ import FriendsContainer from './friendsContainer';
 import { getPosts } from '../../store/posts';
 import Timeline from '../posts/timeline';
 import { getUsers } from '../../store/users';
+import { receivePosts } from '../../store/posts';
 
 const ProfilePage = () => {
     const {userId} = useParams();
@@ -25,7 +26,7 @@ const ProfilePage = () => {
     return (
         <div className='page-container'>
             <div className='page-header'>
-                <ProfileHeader userdata={user}/>
+                <ProfileHeader key={user?.id} userdata={user}/>
             </div>
             <div className='page-body'>
                 <div className='bio'>

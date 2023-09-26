@@ -72,6 +72,10 @@
     font-weight: 550; 
 }
 
+.editProfile button:hover {
+    background-color: #d8dade;
+}
+
 .users-name {
     font-size: 31px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;

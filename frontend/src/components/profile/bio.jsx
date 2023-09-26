@@ -26,7 +26,7 @@ const Bio = ({userdata}) => {
     const birthdayFormat = (birthday) => {
     let date = new Date(birthday);
     
-    let options = { year: 'numeric', month: 'long', day: 'numeric' };
+    let options = { year: 'numeric', month: 'long', day : 'numeric'};
     
     return date.toLocaleDateString('en-US', options);
     }

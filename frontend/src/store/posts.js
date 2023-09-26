@@ -5,14 +5,14 @@ const RECEIVE_POST = "/posts/receivePost";
 const RECEIVE_POSTS = "/posts/receivePosts";
 const REMOVE_POST = "/posts/removePost";
 
-const receivePost = (data) => {
+export const receivePost = (data) => {
     return {
         type: RECEIVE_POST,
         data
     };
 };
 
-const receivePosts = (data) => {
+export const receivePosts = (data) => {
     return {
         type: RECEIVE_POSTS,
         data
@@ -45,7 +45,7 @@ export const getPosts = (state) => {
 };
 
 export const createPost = (post) => async dispatch => {
-    const res = await csrfFetch("/api/posts", {
+    const res = await csrfFetch(`/api/posts`, {
         method: "POST",
         body: JSON.stringify(post)
     });
@@ -76,18 +76,19 @@ const postsReducer = (state = {}, action) => {
     let newState = {...state};
     switch (action.type) {
         case RECEIVE_POST:
-            newState[action.data.post.id] = action.data.post
+            newState[action.data.post.id] = action.data.post;
+            return newState;
             break;
         case RECEIVE_POSTS:
             return {...newState, ...action.data.posts}
-        break;
+            break;
         case REMOVE_POST:
             delete newState[action.postId]
             return newState
-        break;
+            break;
         case SET_USER:
-            return {...newState, ...action.data.posts }
-        break;
+            return {...action.data.posts }
+            break;
         default:
             return state
             break;

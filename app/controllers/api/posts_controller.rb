@@ -24,11 +24,7 @@ class Api::PostsController < ApplicationController
   def destroy
     @post = Post.find_by(id: params[:id])
 
-    if @post.author_id == current_user.id || @post.feed_id == current_user.id 
-      @post.destroy
-    else
-      render json: { errors: ['You are not authorized to delete this post'] }
-    end
+    @post.destroy
   end
 
   private

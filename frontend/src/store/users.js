@@ -10,7 +10,7 @@ const setUser = (data) => {
     };
 };
 
-const receiveUsers = (data) => {
+export const receiveUsers = (data) => {
     return {
         type: SET_USERS,
         data
