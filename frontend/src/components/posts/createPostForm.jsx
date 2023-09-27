@@ -10,16 +10,20 @@ const CreatePostForm = ({userdata, onClose}) => {
     const [body, setBody] = useState("");
     const [authorId, setAuthorId] = useState(sessionUser?.id);
     const [feedId, setFeedId] = useState(user?.id);
-    //const [photo, setPhoto] = useState();
+    const [photoFile, setPhotoFile] = useState();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        setFeedId(user?.id)
-        setAuthorId(sessionUser?.id)
-        dispatch(createPost({body, authorId, feedId}))
+        const formData = new FormData();
+        formData.append('post[body]', body)
+        formData.append('post[feedId]', feedId)
+        formData.append('post[authorId]', authorId)
+        if (photoFile) {
+            formData.append('post[photo]', photoFile)
+        }
+        dispatch(createPost(formData))
         onClose();
     }
-
     return (
         <div className='create-post-form-container'>
             <div className='create-post-form-header'>
@@ -42,6 +46,7 @@ const CreatePostForm = ({userdata, onClose}) => {
                     onChange={(e) => setBody(e.target.value)}
                 />
             </div>
+            <input type='file' onChange={(e) => setPhotoFile(e.target.files[0])}></input>
             <div className='create-post-form-footer'>
                 <button onClick={handleSubmit}>Post</button>
             </div>

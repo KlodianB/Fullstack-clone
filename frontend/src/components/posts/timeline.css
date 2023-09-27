@@ -260,3 +260,23 @@ textarea {
     width: 99%;
     margin-top: 10px;
 }
+
+
+.test {
+    border: 1px solid black;
+}
+
+.post-photo {
+    width: 100%;
+    text-align: center; 
+    margin-top: 10px; 
+    margin-bottom: 10px;
+}
+
+.post-photo img {
+    width: 100%; 
+    max-width: 100%; 
+    max-height: 600px;
+    height: auto; 
+    object-fit: contain;
+}

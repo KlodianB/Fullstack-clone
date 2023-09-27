@@ -27,7 +27,7 @@ const Timeline = ({userdata}) => {
     const [editingPostId, setEditingPostId] = useState(null);
 
     const [showDropdownPostId, setShowDropdownPostId] = useState(null);
-    
+
     const handleDropdownClick = (postId) => {
         if (showDropdownPostId === postId) {
           setShowDropdownPostId(null);
@@ -129,9 +129,11 @@ const Timeline = ({userdata}) => {
                             <div className='post-content'>
                                 {post.body}
                             </div>
-                            {/* <div className='post-photo'>
-                                only add this div if the post contains a photo
-                            </div> */}
+                            {post.photoUrl && 
+                                <div className='post-photo'>
+                                    <img src={post.photoUrl} className="post-photo"></img>
+                                </div>
+                            }
                             <div className='post-footer'>
                                 <div className='like-container'>
                                     <i className="fa fa-thumbs-up" aria-hidden="true"></i>&nbsp;Like

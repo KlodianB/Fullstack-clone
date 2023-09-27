@@ -1,5 +1,5 @@
 class Api::PostsController < ApplicationController
-  wrap_parameters include: Post.attribute_names + ["authorId", "feedId"]
+  wrap_parameters include: Post.attribute_names + ["authorId", "feedId", "photo"]
   def index
     @posts = Posts.all
     render :index
@@ -7,9 +7,11 @@ class Api::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-
+    debugger
     if @post.save
       render :show
+    else 
+      render json: @post.errors.full_messages, status: 422
     end
   end
 
@@ -30,6 +32,7 @@ class Api::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:body, :author_id, :feed_id)
+
+    params.require(:post).permit(:body, :author_id, :feed_id, :photo)
   end
 end

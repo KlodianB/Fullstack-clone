@@ -40,15 +40,18 @@ const Bio = ({userdata}) => {
                 <div className="intro-item">
                 {user ? <><span className="icon"><i className="fa-solid fa-cake-candles fa-lg"></i></span> &nbsp; Birthday:  <span className='userInfo'>{birthdayFormat(user.birthday)}</span></> : null}
                 </div>
-                {user?.residence ? <div className="intro-item">
-                    <span className="icon"><i className="fa-solid fa-house-chimney fa-lg"></i></span> &nbsp;Lives in <span className='userInfo'>{user?.residence}</span>
-                </div> : null}
                 <div className="intro-item">
                     <span className="icon"><i className="fa-solid fa-venus-mars fa-lg"></i></span>&nbsp;Gender: <span className='userInfo'>{user?.gender}</span>
                 </div>
-                <div className="intro-item">
+                {user?.workplace ? <div className="intro-item">
                     <span className="icon"><i className="fa-solid fa-briefcase fa-lg"></i></span> &nbsp;Works at <span className='userInfo'>{user?.workplace}</span>
-                </div>
+                </div> : null}
+                {user?.education ? <div className="intro-item">
+                    <span className="icon"><i class="fa-solid fa-graduation-cap fa-lg"></i></span> &nbsp;Studied at <span className='userInfo'>{user?.education}</span>
+                </div> : null}
+                {user?.residence ? <div className="intro-item">
+                    <span className="icon"><i className="fa-solid fa-house-chimney fa-lg"></i></span> &nbsp;Lives in <span className='userInfo'>{user?.residence}</span>
+                </div> : null}
                 {sessionUser.id == userId ? 
                 <div className="intro-item" id="intro-edit">
                     <button onClick={() => dispatch(setModalDisplay(true))}>Edit details</button>

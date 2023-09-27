@@ -47,7 +47,7 @@ export const getPosts = (state) => {
 export const createPost = (post) => async dispatch => {
     const res = await csrfFetch(`/api/posts`, {
         method: "POST",
-        body: JSON.stringify(post)
+        body: post
     });
     const data = await res.json();
     dispatch(receivePost(data));
@@ -78,20 +78,15 @@ const postsReducer = (state = {}, action) => {
         case RECEIVE_POST:
             newState[action.data.post.id] = action.data.post;
             return newState;
-            break;
         case RECEIVE_POSTS:
             return {...newState, ...action.data.posts}
-            break;
         case REMOVE_POST:
             delete newState[action.postId]
             return newState
-            break;
         case SET_USER:
             return {...action.data.posts }
-            break;
         default:
             return state
-            break;
     }; 
 };
 
