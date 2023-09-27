@@ -24,9 +24,10 @@ const Timeline = ({userdata}) => {
     const [isCommenting, setIsCommenting] = useState(null)
     const [comment, setComment] = useState({})
 
-    const [showEditForm, setShowEditForm] = useState(false);
+    const [editingPostId, setEditingPostId] = useState(null);
 
     const [showDropdownPostId, setShowDropdownPostId] = useState(null);
+    
     const handleDropdownClick = (postId) => {
         if (showDropdownPostId === postId) {
           setShowDropdownPostId(null);
@@ -42,7 +43,7 @@ const Timeline = ({userdata}) => {
 
     const handleCloseEditForm = () => {
         setShowDropdownPostId(null)
-        setShowEditForm(false)
+        setEditingPostId(null)
     }
 
     const handleClose = () => {
@@ -112,14 +113,15 @@ const Timeline = ({userdata}) => {
                                     <i className="fa-solid fa-ellipsis fa-lg"></i>
                                     {showDropdownPostId === post.id && (
                                         <div className='dropdown'>
-                                            <button onClick={() => setShowEditForm(true)}>Edit Post</button>
+                                            <button onClick={() => setEditingPostId(post.id)}>Edit Post</button>
                                             <button onClick={handleDelete}>Delete Post</button>
                                         </div>
                                     )}
                                 </div>
                                 : null}
                             </div>
-                            {showEditForm && 
+                            {editingPostId === post.id && 
+
                             <Modal onClose={handleCloseEditForm}>
                                 <EditPostForm onClose={handleCloseEditForm} post={post}/>
                             </Modal>
