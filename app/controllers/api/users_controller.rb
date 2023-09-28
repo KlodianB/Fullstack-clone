@@ -16,6 +16,13 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def search
+    query = params[:query]
+
+    @users = User.where('first_name ILIKE ?', "%#{query}%")
+    render :search
+  end
+
   def update
       @user = User.find_by(id: params[:id])
 

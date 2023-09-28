@@ -73,9 +73,14 @@
     align-items: center;
     margin-left: 15px;
 }
+
+.author-pfp a {
+    margin-left: 17px;
+}
   
 .author-pfp,
 .feedUser-pfp {
+    margin-top: 8px;
     width: 40px;
     height: 40px;
     border-radius: 20px;
@@ -111,10 +116,6 @@
     margin-left: 10px; /* Adjusted to keep uniformity in spacing */
 }
 
-.fa-arrow-right {
-    margin: 0 5px;
-    color: #65676b;
-}
 
 .pfp {
     height: 40px;
@@ -140,6 +141,11 @@
 
 .edit-post:hover {
     background-color: #f2f2f2;
+}
+
+.author-name {
+    width: 500px;
+    /* border: 1px solid black; */
 }
 
 .author-name a {
@@ -279,4 +285,15 @@ textarea {
     max-height: 600px;
     height: auto; 
     object-fit: contain;
+}
+
+.information {
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: row;
+}
+
+.information i {
+    margin-top: 23px;
+    margin-left: 5px;
 }

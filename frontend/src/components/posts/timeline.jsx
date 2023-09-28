@@ -89,20 +89,18 @@ const Timeline = ({userdata}) => {
                                                     <img src={author.profilePicture} className='pfp'></img>
                                                 </Link>
                                             </div>
+                                        {author?.id !== feedUser?.id && (<>
                                         <div className='author-name'>
-                                            <Link to={`/users/${author?.id}`}>
-                                                {author?.firstName} {author?.lastName}
-                                            </Link>
+                                        <div className='information'><Link to={`/users/${author?.id}`}> {author?.firstName} {author?.lastName} </Link><i className="fa-solid fa-caret-right fa-lg"></i><Link to={`/users/${feedUser?.id}`}>{feedUser?.firstName} {feedUser?.lastName}</Link></div>
                                             <div className="date">{formatDate(post.createdAt)}</div>
                                         </div>
-                                        {author?.id !== feedUser?.id && (
+                                        </>)}
+                                        {author?.id === feedUser?.id && (
                                             <>
-                                                <div className='arrow-icon'><i className="fa fa-arrow-right" aria-hidden="true"></i></div>
-                                                    <div className='feedUser-name'>
-                                                        <Link to={`/users/${feedUser?.id}`}>
-                                                            {feedUser.firstName} {feedUser.lastName}
-                                                        </Link>
-                                                    </div>
+                                                <div className='author-name'>
+                                                <Link to={`/users/${author?.id}`}> {author?.firstName} {author?.lastName} </Link>
+                                                <div className="date">{formatDate(post.createdAt)}</div>
+                                                </div>
                                             </>
                                         )}
                                     </div>

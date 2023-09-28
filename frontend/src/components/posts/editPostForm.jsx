@@ -9,7 +9,7 @@ const EditPostForm = ({ post, onClose }) => {
     
     const [body, setBody] = useState(post.body);
     
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         dispatch(updatePost({ id: post.id, body }));
         onClose();

@@ -5,12 +5,13 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   namespace :api, defaults: { format: :json } do
+    get "users/search", to: "users#search"
     resources :users, only: [:index, :create, :show, :update, :destroy]
     resource :session, only: [:show, :create, :destroy]
     resources :posts, only: [:index, :create, :update, :destroy]
   end
 
   post 'api/test', to: 'application#test'
-  get '*path', to: "static_pages#frontend_index"
+  # get '*path', to: "static_pages#frontend_index"
 
 end

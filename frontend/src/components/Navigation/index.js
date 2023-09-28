@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './profile';
+import NavSearch from './NavSearch.js'
 // import LoginFormModal from '../LoginFormModal';
 import './nav.css';
 
@@ -24,15 +25,16 @@ function Navigation() {
         <div className="navbar-container">
           <div className='left-nav'>
             <div className='logo-container'>
-              <NavLink className="logo" exact to="/">FB</NavLink> {/* Simple text logo. Replace with an image for a more realistic look. */}
+              <NavLink className="logo" exact to="/">FB</NavLink> 
             </div>
             <div className="search-container">
-              <input type="text" placeholder="Search" />
-              <i className="fa-solid fa-search"></i> {/* FontAwesome search icon */}
+              {/* <input type="text" placeholder="Search" /> */}
+              <i className="fa-solid fa-search fa-lg"></i> 
+              <NavSearch />
             </div>
           </div>
           <div className='middle'>
-          <i className="fa-solid fa-house"></i>
+          <NavLink exact to="/"><i class="fa-solid fa-house fa-2xl"></i></NavLink>
           </div>
           <div className='right-nav'>
               {sessionLinks}

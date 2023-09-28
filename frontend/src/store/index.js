@@ -4,13 +4,15 @@ import sessionReducer from './session';
 import uiReducer from './ui';
 import usersReducer from './users';
 import postsReducer from './posts';
+import searchReducer from './search';
 
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   ui: uiReducer,
   users: usersReducer,
-  posts: postsReducer
+  posts: postsReducer,
+  search: searchReducer
 });
 
 let enhancer;
