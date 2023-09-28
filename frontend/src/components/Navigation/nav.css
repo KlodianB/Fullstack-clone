@@ -161,15 +161,16 @@
 #search-dropdown .search-dropdown-item {
   padding: 10px; 
   cursor: pointer;
-  background-color: #ffffff;
+  background-color: #f1f1f1;
   list-style-type: none;
 }
 
 #search-dropdown .search-dropdown-item:hover {
-  background-color: #f1f1f1; /* Adjust as needed */
+  background-color: #f1f1f1; 
 }
 
 .searchbar-container { 
   height: 40px;
 }
+
 

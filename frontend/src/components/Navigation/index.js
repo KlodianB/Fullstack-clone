@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './profile';
-import NavSearch from './NavSearch.js'
+import NavSearch from './NavSearch';
 // import LoginFormModal from '../LoginFormModal';
 import './nav.css';
 
@@ -28,7 +28,6 @@ function Navigation() {
               <NavLink className="logo" exact to="/">FB</NavLink> 
             </div>
             <div className="search-container">
-              {/* <input type="text" placeholder="Search" /> */}
               <i className="fa-solid fa-search fa-lg"></i> 
               <NavSearch />
             </div>

@@ -53,14 +53,18 @@ export const createPost = (post) => async dispatch => {
     dispatch(receivePost(data));
 };
 
-export const updatePost = (post) => async dispatch => {
-    const res = await csrfFetch(`/api/posts/${post.id}`, {
+export const updatePost = (formData, postId) => async dispatch => {
+    const res = await csrfFetch(`/api/posts/${postId}`, {
         method: "PATCH",
-        body: JSON.stringify(post)
+        body: formData,
     });
 
-    const data = await res.json();
-    dispatch(receivePost(data));
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(receivePost(data));
+    } else {
+        console.log('Failed to update the post');
+    }
 };
 
 export const deletePost = (postId) => async dispatch => {

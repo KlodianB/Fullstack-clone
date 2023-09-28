@@ -6,12 +6,16 @@ import { updatePost } from '../../store/posts';
 const EditPostForm = ({ post, onClose }) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
+    const [photoFile, setPhotoFile] = useState();
     
     const [body, setBody] = useState(post.body);
     
     const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch(updatePost({ id: post.id, body }));
+        const formData = new FormData();
+        formData.append("post[body]", body);
+        if (photoFile) formData.append("post[photo]", photoFile);
+        dispatch(updatePost(formData, post.id)); 
         onClose();
     }
 
@@ -36,6 +40,7 @@ const EditPostForm = ({ post, onClose }) => {
                     onChange={(e) => setBody(e.target.value)}
                 />
             </div>
+            <input type='file' onChange={(e) => setPhotoFile(e.target.files[0])}></input>
             <div className='edit-post-form-footer'>
                 <button onClick={handleSubmit}>Save</button>
             </div>
