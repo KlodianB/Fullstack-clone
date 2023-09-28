@@ -5,6 +5,8 @@ import SignupModal from "../SignUpForm/SignupModal";
 import { Modal } from "../context/Modal";
 import SignUpForm from "../SignUpForm";
 import { useDispatch } from "react-redux";
+import Newsfeed from "../newsfeed/newsfeed";
+import './splash.css'
 
 const Splash = () => {
     const sessionUser = useSelector(state => state.session.user);
@@ -26,7 +28,13 @@ const Splash = () => {
             </>
         )
         } else {
-
+           return (
+            <div className="splash-container">
+                <div className="filler1"></div>
+                <Newsfeed />
+                <div className="filler2"></div>
+            </div>
+           ) 
         }
 
 }

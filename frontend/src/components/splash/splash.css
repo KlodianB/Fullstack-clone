@@ -1,0 +1,22 @@
+.splash-container {
+    display: flex;
+    margin-top: 64px;
+    gap: 15px;
+}
+
+.filler1, .filler2 {
+    width: 50%;
+    border: 1px solid red;
+    margin-top: 80px;
+}
+
+.filler1 {
+    margin-left: 10px;
+}
+
+.filler2 {
+    margin-right: 10px;
+    top: 74px;
+    position: sticky;
+    z-index: 100;
+}

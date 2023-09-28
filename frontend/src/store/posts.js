@@ -44,6 +44,13 @@ export const getPosts = (state) => {
     };
 };
 
+export const fetchAllPosts = () => async dispatch => {
+    const res = await csrfFetch('/api/posts');
+  
+    const data = await res.json();
+    dispatch(receivePosts(data));
+  };
+
 export const createPost = (post) => async dispatch => {
     const res = await csrfFetch(`/api/posts`, {
         method: "POST",

@@ -1,7 +1,7 @@
 class Api::PostsController < ApplicationController
   wrap_parameters include: Post.attribute_names + ["authorId", "feedId", "photo"]
   def index
-    @posts = Posts.all
+    @posts = Post.all
     render :index
   end
 
