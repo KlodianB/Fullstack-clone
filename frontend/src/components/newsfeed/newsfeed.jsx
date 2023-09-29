@@ -126,8 +126,13 @@ const Newsfeed = () => {
                                 </div>
                             }
                             <div className='post-footer'>
-                                <div className='like-container'>
+                            <div className='like-container'>
+                                <div className="like-number">
+                                    {Math.floor(Math.random() * 10)} likes
+                                </div>
+                                <div className="like-text">
                                     <i className="fa fa-thumbs-up" aria-hidden="true"></i>&nbsp;Like
+                                </div>
                                 </div>
                                 <div className='add-comment-textfield'>
                                 {isCommenting === post.id ? (

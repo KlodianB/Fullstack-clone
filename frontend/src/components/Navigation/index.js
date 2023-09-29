@@ -33,7 +33,7 @@ function Navigation() {
             </div>
           </div>
           <div className='middle'>
-          <NavLink exact to="/"><i class="fa-solid fa-house fa-2xl"></i></NavLink>
+          <NavLink exact to="/"><i className="fa-solid fa-house fa-2xl"></i></NavLink>
           </div>
           <div className='right-nav'>
               {sessionLinks}

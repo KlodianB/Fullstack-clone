@@ -112,8 +112,9 @@
 .like-container,
 .add-comment-textfield {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    margin-left: 10px; /* Adjusted to keep uniformity in spacing */
+    margin-left: 10px;
 }
 
 
@@ -189,12 +190,12 @@
 
 .like-container {
     width: 95%;
-    border-top: 1px solid gray;
-    border-bottom: 1px solid gray;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
     padding: 10px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     margin-left: 1px; 
 }
 

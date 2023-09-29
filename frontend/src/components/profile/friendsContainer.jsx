@@ -13,8 +13,8 @@ const FriendsContainer = ({userdata}) => {
             <div className="friends-grid">
                 {/* {friends.map((friend, index) => (
                     <div key={index} className="friend-item">
-                        <img src={friend.src} alt={friend.name} className="friend-photo" />
-                        <div className="friend-name">{friend.name}</div>
+                        <img src={friend.src} alt={friend.firstName} className="friend-photo" />
+                        <div className="friend-name">{friend.firstName}</div>
                     </div>
                 ))} */}
             </div>

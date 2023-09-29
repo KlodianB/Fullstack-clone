@@ -1,4 +1,5 @@
 import csrfFetch from "./csrf";
+import { setCurrentUser } from "./session";
 
 export const SET_USER = 'users/setUser';
 export const SET_USERS = 'users/setUsers'
@@ -65,7 +66,9 @@ export const updateUser = ( userId, updatedUser) => async dispatch => {
 
     if (res.ok) {
         const data = await res.json();
+        debugger
         dispatch(setUser(data))
+        dispatch(setCurrentUser(data.user))
     } else {
         const error = await res.json();
         throw error;

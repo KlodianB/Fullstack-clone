@@ -12,11 +12,10 @@
 
 .filler1 {
     margin-left: 10px;
+    margin-top: -16px;
+    position: sticky ;
 }
 
 .filler2 {
     margin-right: 10px;
-    top: 74px;
-    position: sticky;
-    z-index: 100;
 }

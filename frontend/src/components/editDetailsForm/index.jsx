@@ -22,10 +22,9 @@ const EditDetailsForm = ({userdata, onSave}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
-        debugger
         dispatch(updateUser(user.id, { ...user, firstName, lastName, bio, workplace, education, residence  }))
             .then(() => {
-                dispatch(setModalDisplay(!modalDisplay)) // Close the modal after a successful update
+                dispatch(setModalDisplay(!modalDisplay)) 
             })
             
     };
@@ -113,7 +112,7 @@ const EditDetailsForm = ({userdata, onSave}) => {
           className="edit-input"
         />
         </div>
-        <button type="submit" className="edit-btn" id="editBtn">Edit details</button>
+        <button type="submit" className="edit-btn" id="editBtn">Save</button>
     </form>
     </>
       );

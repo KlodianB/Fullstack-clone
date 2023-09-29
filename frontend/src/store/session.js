@@ -3,10 +3,12 @@ import csrfFetch from "./csrf.js";
 const SET_CURRENT_USER = 'session/setCurrentUser';
 const REMOVE_CURRENT_USER = 'session/removeCurrentUser';
 
-const setCurrentUser = (user) => ({
+export const setCurrentUser = (user) => {
+  debugger
+  return {
   type: SET_CURRENT_USER,
   payload: user
-});
+}};
 
 const removeCurrentUser = () => ({
   type: REMOVE_CURRENT_USER
@@ -50,7 +52,7 @@ export const restoreSession = () => async dispatch => {
 
 export const signup = (user) => async (dispatch) => {
   console.log(user)
-  const { email, firstName, lastName, password, birthday, gender } = user;
+  const { email, firstName, lastName, password, birthday, gender, profilePicture, coverPhoto } = user;
   const response = await csrfFetch("/api/users", {
     method: "POST",
     body: JSON.stringify({
@@ -59,7 +61,9 @@ export const signup = (user) => async (dispatch) => {
       lastName,
       password,
       birthday,
-      gender
+      gender,
+      profilePicture,
+      coverPhoto
     })
   });
   const data = await response.json();

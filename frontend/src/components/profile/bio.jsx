@@ -47,7 +47,7 @@ const Bio = ({userdata}) => {
                     <span className="icon"><i className="fa-solid fa-briefcase fa-lg"></i></span> &nbsp;Works at <span className='userInfo'>{user?.workplace}</span>
                 </div> : null}
                 {user?.education ? <div className="intro-item">
-                    <span className="icon"><i class="fa-solid fa-graduation-cap fa-lg"></i></span> &nbsp;Studied at <span className='userInfo'>{user?.education}</span>
+                    <span className="icon"><i className="fa-solid fa-graduation-cap fa-lg"></i></span> &nbsp;Studied at <span className='userInfo'>{user?.education}</span>
                 </div> : null}
                 {user?.residence ? <div className="intro-item">
                     <span className="icon"><i className="fa-solid fa-house-chimney fa-lg"></i></span> &nbsp;Lives in <span className='userInfo'>{user?.residence}</span>

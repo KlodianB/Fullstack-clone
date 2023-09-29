@@ -41,7 +41,7 @@ function ProfileButton({ user }) {
             {`${user.firstName} ${user.lastName}`}
             </li></NavLink>
           <li onClick={logout}>
-          <i class="fa-solid fa-right-from-bracket fa-lg"></i> Log Out
+          <i className="fa-solid fa-right-from-bracket fa-lg"></i> Log Out
           </li>
         </ul>
       )}

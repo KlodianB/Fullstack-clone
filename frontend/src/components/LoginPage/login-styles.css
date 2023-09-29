@@ -209,3 +209,10 @@ body, html {
     cursor: pointer;
     text-decoration: underline;
 }
+
+.error {
+    margin-left: 75px;
+    list-style-type: none;
+    margin-bottom: 10px;
+    color: red;
+}

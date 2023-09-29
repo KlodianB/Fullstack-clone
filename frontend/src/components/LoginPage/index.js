@@ -51,11 +51,11 @@ return (
               <p className="fb-connect-text">Connect with friends and the world around you on Facebook.</p>
             </div>
             <div className="login-right">
+            <ul>
+              {errors.map(error => <li key={error} className="error">{error}</li>)}
+            </ul>
               <div className="login-right-content">
               <form className="login-form"onSubmit={handleSubmit}>
-                <ul>
-                  {errors.map(error => <li key={error}>{error}</li>)}
-                </ul>
                 <input
                   type="text"
                   id="login-email"

@@ -12,9 +12,9 @@ const EditProfile = ({ userdata, handleEdit }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const formData = new FormData();
-        formData.append('user[profilePicture]', profilePicture);
-        formData.append('user[coverPhoto]', coverPhoto);
+        // const formData = new FormData();
+        // formData.append('user[profilePicture]', profilePicture);
+        // formData.append('user[coverPhoto]', coverPhoto);
         dispatch(updateUser(user.id, { ...user, profilePicture, coverPhoto }))
         handleEdit();
     }
