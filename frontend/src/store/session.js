@@ -4,7 +4,6 @@ const SET_CURRENT_USER = 'session/setCurrentUser';
 const REMOVE_CURRENT_USER = 'session/removeCurrentUser';
 
 export const setCurrentUser = (user) => {
-  debugger
   return {
   type: SET_CURRENT_USER,
   payload: user
