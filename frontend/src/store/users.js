@@ -66,6 +66,7 @@ export const updateUser = ( userId, updatedUser) => async dispatch => {
 
     if (res.ok) {
         const data = await res.json();
+        debugger
         dispatch(setUser(data))
         dispatch(setCurrentUser(data.user))
     } else {
