@@ -8,7 +8,7 @@
     width: 82.25%;
     display: flex;
     gap: 17px;
-    height: 600px;
+    min-height: 600px;
 }
 
 .bio {
@@ -17,6 +17,8 @@
 
     display: flex;
     flex-direction: column;
+    position: sticky;
+    top: 10px;
 }
 
 .users-post-index {
@@ -26,20 +28,6 @@
 
 
 
-
-
-/* .test {
-    font-size: 200px;
-}
-
-.test-container {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid red;
-} */
 
 
 

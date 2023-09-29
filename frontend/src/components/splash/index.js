@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import Newsfeed from "../newsfeed/newsfeed";
 import './splash.css'
 import FriendsContainer from "../profile/friendsContainer";
+import PhotosContainer from "../profile/photosContainer"
 
 const Splash = () => {
     const sessionUser = useSelector(state => state.session.user);
@@ -33,9 +34,12 @@ const Splash = () => {
             <div className="splash-container">
                 <div className="filler1">
                     <FriendsContainer />
+                    <PhotosContainer />
                 </div>
                 <Newsfeed />
-                <div className="filler2"></div>
+                <div className="filler2">
+                    
+                </div>
             </div>
            ) 
         }

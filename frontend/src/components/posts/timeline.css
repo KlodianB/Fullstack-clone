@@ -121,7 +121,7 @@
 .pfp {
     height: 40px;
     width: 40px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     border-radius: 50%;
 }
 
