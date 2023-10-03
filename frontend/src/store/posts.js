@@ -44,4 +44,61 @@ export const getPosts = (state) => {
     };
 };
 
-a
+export const fetchAllPosts = () => async dispatch => {
+    const res = await csrfFetch('/api/posts');
+  
+    const data = await res.json();
+    dispatch(receivePosts(data));
+  };
+
+export const createPost = (post) => async dispatch => {
+    const res = await csrfFetch(`/api/posts`, {
+        method: "POST",
+        body: post
+    });
+    const data = await res.json();
+    dispatch(receivePost(data));
+};
+
+export const updatePost = (formData, postId) => async dispatch => {
+    const res = await csrfFetch(`/api/posts/${postId}`, {
+        method: "PATCH",
+        body: formData,
+    });
+
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(receivePost(data));
+    } else {
+        console.log('Failed to update the post');
+    }
+};
+
+export const deletePost = (postId) => async dispatch => {
+    const res = await csrfFetch(`/api/posts/${postId}`, {
+        method: "DELETE"
+    });
+    if (res.ok) {
+        dispatch(removePost(postId))
+    };
+};
+
+const postsReducer = (state = {}, action) => {
+    let newState = {...state};
+    switch (action.type) {
+        case RECEIVE_POST:
+            newState[action.data.post.id] = action.data.post;
+            return newState;
+        case RECEIVE_POSTS:
+            return {...newState, ...action.data.posts}
+        case REMOVE_POST:
+            delete newState[action.postId]
+            return newState
+        case SET_USER:
+            return {...action.data.posts }
+        default:
+            return state
+    }; 
+};
+
+export default postsReducer
