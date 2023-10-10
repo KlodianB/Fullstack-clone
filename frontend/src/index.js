@@ -12,7 +12,7 @@ import { ModalProvider } from './components/context/Modal';
 
 const store = configureStore();
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production') { 
   window.store = store;
   window.store = store;
   window.csrfFetch = csrfFetch;
