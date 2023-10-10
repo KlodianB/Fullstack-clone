@@ -9,6 +9,9 @@
 Post.destroy_all
 User.destroy_all
 
+ActiveRecord::Base.connection.reset_pk_sequence!('users')
+ActiveRecord::Base.connection.reset_pk_sequence!('posts')
+
 profile_pictures = [
   "https://media.istockphoto.com/id/1330874290/photo/portrait-of-a-teenage-3d-character.jpg?s=612x612&w=0&k=20&c=mL25zbYDBi0JnXwt0UoYpzeMK6bEbktuVX11yfytz5E=",
   "https://media.istockphoto.com/id/1389898237/photo/cute-girl-iconic-character-with-glasses-3d-rendering.jpg?s=612x612&w=0&k=20&c=dFG5lmBicdNe33IrFgr8YYrX1rF38DljWS7g84Q78HI=",
