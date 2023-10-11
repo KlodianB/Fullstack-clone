@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import './styles.css'
-import { setModalDisplay } from "../../store/ui";
+import { getModalDisplay, setModalDisplay } from "../../store/ui";
+import { useSelector } from "react-redux";
+
 
 const SignUpForm = () => {
     const months = [
@@ -24,6 +26,7 @@ const SignUpForm = () => {
     const [errors, setErrors] = useState([]);
     const [profilePicture, setProfilePicture] = useState("https://static.vecteezy.com/system/resources/previews/020/765/399/non_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg");
     const [coverPhoto, setCoverPhoto] = useState("https://images.unsplash.com/photo-1600577916048-804c9191e36c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8d2VsY29tZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80");
+    const modalDisplay = useSelector(getModalDisplay);
 
     const currentYear = new Date().getFullYear();
     const monthIndex = months.indexOf(month);
@@ -37,7 +40,9 @@ const SignUpForm = () => {
             }
             setBirthday(new Date(year, monthIndex, day).toJSON());
             setErrors([]);
-            return dispatch(sessionActions.signup({ firstName, lastName, email, password, birthday, gender, profilePicture, coverPhoto }))
+            return dispatch(sessionActions.signup({ firstName, lastName, email, password, birthday, gender, profilePicture, coverPhoto })).then(() => {
+                dispatch(setModalDisplay(!modalDisplay)) 
+            })
             .catch(async (res) => {
             let data;
             try {
@@ -85,7 +90,7 @@ const SignUpForm = () => {
     };
 
     const onClose = () => {
-        dispatch(setModalDisplay())
+        dispatch(setModalDisplay(!modalDisplay))
     }
       
       return (
