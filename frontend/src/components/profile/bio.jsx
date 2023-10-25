@@ -1,11 +1,9 @@
 import './bio.css'
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
 import { Modal } from '../context/Modal';
 import EditDetailsForm from '../editDetailsForm';
 import { useDispatch } from 'react-redux';
-import { updateUser } from '../../store/users';
 import { getModalDisplay, setModalDisplay } from "../../store/ui";
 
 const Bio = ({userdata}) => {
@@ -13,14 +11,7 @@ const Bio = ({userdata}) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state=> state.session.user);
     const {userId} = useParams();
-    const [bio, setBio] = useState(user?.bio || "");
-    const [workplace, setWorkplace] = useState(user?.workplace || "");
-    const [education, setEducation] = useState(user?.education || "");
-    const [residence, setResidence] = useState(user?.residence || "");
-    const [errors, setErrors] = useState([]);
     const modalDisplay = useSelector(getModalDisplay);
-
-    const [isModalOpen, setIsModalOpen] = useState(false);
 
 
     const birthdayFormat = (birthday) => {

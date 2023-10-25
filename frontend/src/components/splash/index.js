@@ -1,7 +1,7 @@
 import LoginForm from "../LoginPage";
 import { useSelector } from "react-redux";
 import { getModalDisplay, setModalDisplay } from "../../store/ui";
-import SignupModal from "../SignUpForm/SignupModal";
+// import SignupModal from "../SignUpForm/SignupModal";
 import { Modal } from "../context/Modal";
 import SignUpForm from "../SignUpForm";
 import { useDispatch } from "react-redux";
@@ -12,11 +12,11 @@ import PhotosContainer from "../profile/photosContainer"
 
 const Splash = () => {
     const sessionUser = useSelector(state => state.session.user);
-    const modalDisplay = useSelector(getModalDisplay)
+    const modalDisplay = useSelector(getModalDisplay);
     const dispatch = useDispatch();
     
     const onClose = () => {
-        dispatch(setModalDisplay())
+        dispatch(setModalDisplay(!modalDisplay))
     }
         if (!sessionUser) {
         return (
@@ -43,7 +43,6 @@ const Splash = () => {
             </div>
            ) 
         }
-
 }
 
 export default Splash;
