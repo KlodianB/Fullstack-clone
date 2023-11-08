@@ -26,7 +26,6 @@ const EditDetailsForm = ({userdata, onSave}) => {
             .then(() => {
                 dispatch(setModalDisplay(!modalDisplay)) 
             })
-            
     };
     
 

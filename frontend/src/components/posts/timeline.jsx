@@ -9,6 +9,7 @@ import CreatePostForm from './createPostForm';
 import { Modal } from '../context/Modal';
 import { deletePost } from '../../store/posts';
 import EditPostForm from './editPostForm';
+import CommentList from '../Comments/CommentList';
 
 
 const Timeline = ({userdata}) => {
@@ -134,12 +135,15 @@ const Timeline = ({userdata}) => {
                             }
                             <div className='post-footer'>
                                 <div className='like-container'>
-                                <div className="like-number">
-                                    {Math.floor(Math.random() * 10)} likes
+                                    <div className="like-number">
+                                        {Math.floor(Math.random() * 10)} likes
+                                    </div>
+                                    <div className="like-text">
+                                        <i className="fa fa-thumbs-up" aria-hidden="true"></i>&nbsp;Like
+                                    </div>
                                 </div>
-                                <div className="like-text">
-                                    <i className="fa fa-thumbs-up" aria-hidden="true"></i>&nbsp;Like
-                                </div>
+                                <div className='comments-list'>
+                                    <CommentList post={post} />
                                 </div>
                                 <div className='add-comment-textfield'>
                                 {isCommenting === post.id ? (

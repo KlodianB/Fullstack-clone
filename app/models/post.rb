@@ -20,4 +20,5 @@ class Post < ApplicationRecord
     foreign_key: :feed_id, 
     class_name: :User
 
+    has_many :comments
 end

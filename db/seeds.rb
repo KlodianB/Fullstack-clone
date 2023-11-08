@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+Comment.destroy_all
 Post.destroy_all
 User.destroy_all
 
@@ -125,13 +126,21 @@ post_bodies = [
   )
 end
 
-  50.times do |index|
-    Post.create!(
-      body: post_bodies[index],
-      author_id: rand(1..10), 
-      feed_id: rand(1..10)
-    )
-  end
+50.times do |index|
+  Post.create!(
+    body: post_bodies[index],
+    author_id: rand(1..10), 
+    feed_id: rand(1..10)
+  )
+end
+
+100.times do |index|
+  Comment.create!(
+    body: Faker::Lorem.sentence(),
+    user_id: rand(1..10),
+    post_id: rand(1..50)
+  )
+end
 
 
 User.create!(

@@ -1,8 +1,8 @@
 import csrfFetch from "./csrf";
 import { SET_USER } from "./users";
 
-const RECEIVE_POST = "/posts/receivePost";
-const RECEIVE_POSTS = "/posts/receivePosts";
+export const RECEIVE_POST = "/posts/receivePost";
+export const RECEIVE_POSTS = "/posts/receivePosts";
 const REMOVE_POST = "/posts/removePost";
 
 export const receivePost = (data) => {

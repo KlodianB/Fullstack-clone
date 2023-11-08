@@ -5,6 +5,8 @@ import uiReducer from './ui';
 import usersReducer from './users';
 import postsReducer from './posts';
 import searchReducer from './search';
+import commentsReducer from './comments';
+
 
 
 const rootReducer = combineReducers({
@@ -12,7 +14,8 @@ const rootReducer = combineReducers({
   ui: uiReducer,
   users: usersReducer,
   posts: postsReducer,
-  search: searchReducer
+  search: searchReducer,
+  comments: commentsReducer
 });
 
 let enhancer;

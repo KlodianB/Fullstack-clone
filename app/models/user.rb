@@ -37,6 +37,8 @@ class User < ApplicationRecord
   foreign_key: :feed_id,
   class_name: 'Post'
 
+  has_many :comments
+
   has_secure_password
 
   before_validation :ensure_session_token
