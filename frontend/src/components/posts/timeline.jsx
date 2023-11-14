@@ -53,7 +53,7 @@ const Timeline = ({userdata}) => {
     }
 
 
-    const submitComment = async (e) => {
+    const submitComment = (e) => {
         e.preventDefault();
         const commentInput = document.getElementById("comment-input")
         dispatch(createComment({

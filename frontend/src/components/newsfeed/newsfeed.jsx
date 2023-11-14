@@ -8,6 +8,7 @@ import { fetchAllPosts, deletePost } from '../../store/posts';
 import { fetchUsers, getUsers } from '../../store/users';
 import { formatDate } from '../../util/dateUtils';
 import CommentList from '../Comments/CommentList';
+import { createComment } from '../../store/comments';
 
 const Newsfeed = () => {
     const dispatch = useDispatch();
@@ -22,6 +23,8 @@ const Newsfeed = () => {
     const [showDropdownPostId, setShowDropdownPostId] = useState(null);
     const [isCommenting, setIsCommenting] = useState(null);
     const [comment, setComment] = useState({});
+    const [commentPost, setCommentPost] = useState(null)
+    const [commentAuthor, setCommentAuthor] = useState(sessionUser.id)
 
     useEffect(() => {
         dispatch(fetchAllPosts());
@@ -47,9 +50,17 @@ const Newsfeed = () => {
         setShowCreatePostModal(false);
     };
 
-    const submitComment = () => {
-        setIsCommenting(null);
-    };
+    const submitComment = (e) => {
+        e.preventDefault();
+        const commentInput = document.getElementById("comment-input")
+        dispatch(createComment({
+            body: comment,
+            userId: commentAuthor,
+            postId: commentPost
+        }))
+        setComment("")
+        commentInput.value = "";
+    }
 
     return (
         <div className='timeline'>
@@ -140,29 +151,22 @@ const Newsfeed = () => {
                                     <CommentList post={post} />
                                 </div>
                                 <div className='add-comment-textfield'>
-                                {isCommenting === post.id ? (
-                                <>
-                                <img src={sessionUser?.profilePicture} alt="Profile" className='pfp'/>
-                                    <textarea
-                                        key={post.id}
-                                        onChange={(e) => setComment(e.target.value)}
-                                        rows="3"
-                                        cols="3"
-                                    />
-                                    <button onClick={submitComment} className='submit-comment-arrow'>
-                                        <i className="fa fa-arrow-right" aria-hidden="true"></i>
-                                    </button>
-                                </>
-                                ) : (
-                                    <div className='user-comment-info'>
+                                <div className='user-comment-info'>
                                         <Link to={`/users/${sessionUser?.id}`}>
-                                            <img src={sessionUser?.profilePicture} alt="Profile" className='pfp'/>
+                                            <img src={sessionUser?.profilePicture} alt="Profile" className='comment-pfp'/>
                                         </Link>
-                                        <div className="add-a-comment" onClick={() => setIsCommenting(post.id)}>
-                                            Write a comment...
-                                        </div>
+                                        <form  className="add-a-comment" onSubmit={submitComment}>
+                                        <input className="add-a-comment"
+                                        id="comment-input"
+                                        placeholder="Add a comment..."
+                                        onChange={(e) =>{
+                                            setComment(e.target.value)
+                                            setCommentPost(post.id)
+                                        }}
+                                        >
+                                        </input>
+                                        </form>
                                     </div>
-                                )}
                                 </div>
                             </div>
                         </li>
