@@ -8,8 +8,8 @@ const CreatePostForm = ({userdata, onClose}) => {
     const user = userdata
     const sessionUser = useSelector(state => state.session.user)
     const [body, setBody] = useState("");
-    const [authorId, setAuthorId] = useState(sessionUser?.id);
-    const [feedId, setFeedId] = useState(user?.id);
+    const [authorId, setAuthorId] = useState(sessionUser.id);
+    const [feedId, setFeedId] = useState(sessionUser.id);
     const [photoFile, setPhotoFile] = useState();
 
     const handleSubmit = async (e) => {

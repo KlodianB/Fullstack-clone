@@ -54,16 +54,16 @@ export const fetchAllComments = () => async dispatch => {
 export const createComment = (comment) => async dispatch => {
     const res = await csrfFetch(`/api/comments`, {
         method: "POST",
-        body: comment
+        body: JSON.stringify(comment)
     });
     const data = await res.json();
     dispatch(receiveComment(data));
 };
 
-export const updateComment = (formData, commentId) => async dispatch => {
+export const updateComment = (comment, commentId) => async dispatch => {
     const res = await csrfFetch(`/api/comments/${commentId}`, {
         method: "PATCH",
-        body: formData,
+        body: JSON.stringify(comment),
     });
     const data = await res.json();
     dispatch(receiveComment(data));
@@ -90,11 +90,13 @@ const commentsReducer = (state = {}, action) => {
             delete newState[action.commentId];
             return newState;
         case SET_USER:
-            Object.values(action.data.posts).forEach((post) => {
-                post.comments.forEach((comment) => {
-                    newState[comment.id] = comment
+            if (action.data.posts) {
+                Object.values(action.data.posts).forEach((post) => {
+                    post.comments.forEach((comment) => {
+                        newState[comment.id] = comment
+                    })
                 })
-            })
+            }
             return newState
         case RECEIVE_POSTS:
             Object.values(action.data.posts).forEach((post) => {

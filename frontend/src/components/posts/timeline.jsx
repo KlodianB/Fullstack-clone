@@ -10,6 +10,7 @@ import { Modal } from '../context/Modal';
 import { deletePost } from '../../store/posts';
 import EditPostForm from './editPostForm';
 import CommentList from '../Comments/CommentList';
+import { createComment } from '../../store/comments';
 
 
 const Timeline = ({userdata}) => {
@@ -21,9 +22,9 @@ const Timeline = ({userdata}) => {
     const sessionUser = useSelector(state => state.session.user);
 
     const [showCreatePostModal, setShowCreatePostModal] = useState(false);
-
-    const [isCommenting, setIsCommenting] = useState(null)
     const [comment, setComment] = useState({})
+    const [commentAuthor, setCommentAuthor] = useState(sessionUser.id);
+    const [commentPost, setCommentPost] = useState("")
 
     const [editingPostId, setEditingPostId] = useState(null);
 
@@ -52,8 +53,16 @@ const Timeline = ({userdata}) => {
     }
 
 
-    const submitComment = () => {
-        setIsCommenting(null);
+    const submitComment = async (e) => {
+        e.preventDefault();
+        const commentInput = document.getElementById("comment-input")
+        dispatch(createComment({
+            body: comment,
+            userId: commentAuthor,
+            postId: commentPost
+        }))
+        setComment("")
+        commentInput.value = "";
     }
     
     return (
@@ -146,29 +155,22 @@ const Timeline = ({userdata}) => {
                                     <CommentList post={post} />
                                 </div>
                                 <div className='add-comment-textfield'>
-                                {isCommenting === post.id ? (
-                                <>
-                                <img src={sessionUser?.profilePicture} alt="Profile" className='pfp'/>
-                                    <textarea
-                                        key={post.id}
-                                        onChange={(e) => setComment(e.target.value)}
-                                        rows="3"
-                                        cols="3"
-                                    />
-                                    <button onClick={submitComment} className='submit-comment-arrow'>
-                                        <i className="fa fa-arrow-right"></i>
-                                    </button>
-                                </>
-                                ) : (
                                     <div className='user-comment-info'>
                                         <Link to={`/users/${sessionUser?.id}`}>
-                                            <img src={sessionUser?.profilePicture} alt="Profile" className='pfp'/>
+                                            <img src={sessionUser?.profilePicture} alt="Profile" className='comment-pfp'/>
                                         </Link>
-                                        <div className="add-a-comment" onClick={() => setIsCommenting(post.id)}>
-                                            Write a comment...
-                                        </div>
+                                        <form  className="add-a-comment" onSubmit={submitComment}>
+                                        <input className="add-a-comment"
+                                        id="comment-input"
+                                        placeholder="Add a comment..."
+                                        onChange={(e) =>{
+                                            setComment(e.target.value)
+                                            setCommentPost(post.id)
+                                        }}
+                                        >
+                                        </input>
+                                        </form>
                                     </div>
-                                )}
                                 </div>
                             </div>
                         </li>

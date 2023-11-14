@@ -9,11 +9,16 @@ import Newsfeed from "../newsfeed/newsfeed";
 import './splash.css'
 import FriendsContainer from "../profile/friendsContainer";
 import PhotosContainer from "../profile/photosContainer"
+import { useEffect } from "react";
 
 const Splash = () => {
     const sessionUser = useSelector(state => state.session.user);
     const modalDisplay = useSelector(getModalDisplay);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        window.scrollTo(0,0);
+    }, [dispatch])
     
     const onClose = () => {
         dispatch(setModalDisplay(!modalDisplay))

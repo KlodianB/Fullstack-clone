@@ -7,6 +7,7 @@ import EditPostForm from '../posts/editPostForm';
 import { fetchAllPosts, deletePost } from '../../store/posts';
 import { fetchUsers, getUsers } from '../../store/users';
 import { formatDate } from '../../util/dateUtils';
+import CommentList from '../Comments/CommentList';
 
 const Newsfeed = () => {
     const dispatch = useDispatch();
@@ -133,6 +134,10 @@ const Newsfeed = () => {
                                 <div className="like-text">
                                     <i className="fa fa-thumbs-up" aria-hidden="true"></i>&nbsp;Like
                                 </div>
+
+                            </div>
+                                <div className='comments-list'>
+                                    <CommentList post={post} />
                                 </div>
                                 <div className='add-comment-textfield'>
                                 {isCommenting === post.id ? (

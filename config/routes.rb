@@ -8,9 +8,8 @@ Rails.application.routes.draw do
     get "users/search", to: "users#search"
     resources :users, only: [:index, :create, :show, :update, :destroy]
     resource :session, only: [:show, :create, :destroy]
-    resources :posts, only: [:index, :create, :update, :destroy] do 
-      resources :comments, only: [:index, :create, :update, :destroy]
-    end
+    resources :posts, only: [:index, :create, :update, :destroy]
+    resources :comments, only: [:index, :create, :update, :destroy]
   end
 
   post 'api/test', to: 'application#test'

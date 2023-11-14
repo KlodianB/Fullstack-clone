@@ -1,5 +1,6 @@
 class Api::CommentsController < ApplicationController
-    before_action :ensure_logged_in, only: [:create, :update, :destroy]
+  wrap_parameters include: Comment.attribute_names + ["userId", "postId"]
+  before_action :require_logged_in, only: [:create, :update, :destroy]
 
     def index
         @post = Post.find(params[:post_id])
@@ -21,7 +22,7 @@ class Api::CommentsController < ApplicationController
   
     def update
         @comment = Comment.find_by(id: params[:id])
-        @post = @comment.post 
+        # @post = @comment.post 
   
         if @comment.update(comment_params)
           render :show
@@ -32,7 +33,7 @@ class Api::CommentsController < ApplicationController
   
     def destroy
         @comment = Comment.find_by(id: params[:id])
-        if current_user = @comment.user
+        if current_user == @comment.user
             @comment.destroy
             render json: { message: 'Comment deleted successfully' }
         else
@@ -43,6 +44,6 @@ class Api::CommentsController < ApplicationController
     private
   
     def comment_params
-        params.require(:comment).permit(:body)
+        params.require(:comment).permit(:body, :post_id, :user_id)
     end
 end

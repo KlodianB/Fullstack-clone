@@ -203,7 +203,7 @@
 .add-comment-textfield {
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 5px;
 }
 
 
@@ -218,6 +218,7 @@
 textarea {
     width: 100%; 
     resize: none; 
+    margin-left: 10px;
 }
 
 .dropdown {
@@ -259,6 +260,22 @@ textarea {
     font-family: egoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif;
     font-size: 14px;
     font-weight: 300;
+    margin-left: 10px;
+}
+.add-a-comment input {
+    border: none;
+    border-radius: 17px;
+    padding: 8px;
+    width: 100%;
+    text-align: left;
+    background-color: #f0f2f5;
+    color: #65676b;
+    cursor:text;
+    outline: none;
+    font-family: egoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    margin-left: 10px;
 }
 
 .user-comment-info {

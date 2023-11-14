@@ -18,6 +18,7 @@ const ProfilePage = () => {
     const user = useSelector(state => state.users[userId]);
 
     useEffect(() => {
+        window.scrollTo(0,0);
         dispatch(fetchUsers());
         dispatch(fetchUser(userId))
     }, [dispatch, userId])
