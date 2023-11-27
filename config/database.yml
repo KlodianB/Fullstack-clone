@@ -66,7 +66,7 @@ test:
 # Instead, provide the password or a full connection URL as an environment
 # variable when you boot the app. For example:
 #
-#   DATABASE_URL="postgres://myuser:mypass@localhost/somedatabase"
+  DATABASE_URL="postgres://bjovnsgjbvozlv:2a10f95733b375e199094b3ad9e05964c8191cf91a059a0ae292ff569ff14133@ec2-52-206-38-187.compute-1.amazonaws.com:5432/d9r6pa9s3h00bk"
 #
 # If the connection URL is provided in the special DATABASE_URL environment
 # variable, Rails will automatically merge its configuration values on top of
