@@ -6,6 +6,7 @@ import usersReducer from './users';
 import postsReducer from './posts';
 import searchReducer from './search';
 import commentsReducer from './comments';
+import likesReducer from './likes';
 
 
 
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   users: usersReducer,
   posts: postsReducer,
   search: searchReducer,
-  comments: commentsReducer
+  comments: commentsReducer,
+  likes: likesReducer
 });
 
 let enhancer;

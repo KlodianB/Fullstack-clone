@@ -10,6 +10,7 @@ json.posts do
         json.comments post.comments.each do |comment| 
           json.extract! comment, :id, :body, :user_id, :post_id, :created_at, :updated_at
         end
+        json.likes post.likes
      end
   end
 end
@@ -17,5 +18,6 @@ end
 json.comments do 
   @user.comments.each do |comment|
     json.extract! comment, :body, :post_id, :user_id, :created_at, :updated_at
+    json.likes comment.likes
   end
 end

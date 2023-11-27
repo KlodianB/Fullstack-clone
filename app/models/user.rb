@@ -37,6 +37,10 @@ class User < ApplicationRecord
   foreign_key: :feed_id,
   class_name: 'Post'
 
+  has_many :likes,
+  class_name: :Like,
+  dependent: :destroy
+
   has_many :comments
 
   has_secure_password

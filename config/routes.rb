@@ -6,10 +6,13 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     get "users/search", to: "users#search"
+    post "posts/:id/like", to: "posts#like"
+    post "comments/:id/like", to: "comments#like"
     resources :users, only: [:index, :create, :show, :update, :destroy]
     resource :session, only: [:show, :create, :destroy]
     resources :posts, only: [:index, :create, :update, :destroy]
     resources :comments, only: [:index, :create, :update, :destroy]
+    resources :likes, only: [:index]
   end
 
   post 'api/test', to: 'application#test'
