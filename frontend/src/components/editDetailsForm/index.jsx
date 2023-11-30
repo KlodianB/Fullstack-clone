@@ -65,7 +65,7 @@ const EditDetailsForm = ({userdata, onSave}) => {
             />
         </div>
         <div className="bio-edit">
-          <label className="edit-label" htmlFor="bio">Bio</label>
+          <label id="bio-label"className="edit-label" htmlFor="bio">Bio</label>
           <textarea
             id="bio"
             value={bio}

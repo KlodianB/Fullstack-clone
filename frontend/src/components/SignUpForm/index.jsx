@@ -4,6 +4,7 @@ import * as sessionActions from "../../store/session";
 import './styles.css'
 import { getModalDisplay, setModalDisplay } from "../../store/ui";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 
 const SignUpForm = () => {
@@ -13,10 +14,11 @@ const SignUpForm = () => {
     ];
 
     const dispatch = useDispatch();
+    const history = useHistory();
     const [email, setEmail] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
-    const [birthday, setBirthday] = useState(new Date());
+    const [birthday, setBirthday] = useState(null);
     const [month, setMonth] = useState(months[new Date().getMonth()])
     const [day, setDay] = useState(new Date().getDate())
     const [year, setYear] = useState(new Date().getFullYear())
@@ -29,33 +31,8 @@ const SignUpForm = () => {
     const modalDisplay = useSelector(getModalDisplay);
 
     const currentYear = new Date().getFullYear();
-    const monthIndex = months.indexOf(month);
+    const monthIndex = months.indexOf(month) + 1;
     // const zeroPaddedMonth = monthIndex < 10 ? ('0' + monthIndex.toString()).slice(-2) : monthIndex.toString;
-
-    const handleSubmit = (e) => {
-        console.log(year, monthIndex, day);
-        e.preventDefault();
-            if (customGenderPronoun) {
-                setGender(customGenderPronoun)
-            }
-            setBirthday(new Date(year, monthIndex, day).toJSON());
-            setErrors([]);
-            return dispatch(sessionActions.signup({ firstName, lastName, email, password, birthday, gender, profilePicture, coverPhoto })).then(() => {
-                dispatch(setModalDisplay(!modalDisplay)) 
-            })
-            .catch(async (res) => {
-            let data;
-            try {
-                // .clone() essentially allows you to read the response body twice
-                data = await res.clone().json();
-            } catch {
-                data = await res.text(); // Will hit this case if the server is down
-            }
-            if (data?.errors) setErrors(data.errors);
-            else if (data) setErrors([data]);
-            else setErrors([res.statusText]);
-            });
-      };
 
       const renderMonthOptions = () => {
         return months.map((month, index) => (
@@ -92,6 +69,34 @@ const SignUpForm = () => {
     const onClose = () => {
         dispatch(setModalDisplay(!modalDisplay))
     }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (customGenderPronoun) {
+            setGender(customGenderPronoun)
+        }
+        // setBirthday(new Date(`${year} ${monthIndex} ${day}`));
+        const birthdayDate = new Date(`${year} ${monthIndex} ${day}`)
+
+        setBirthday(birthdayDate)
+            setErrors([]);
+            dispatch(sessionActions.signup({ firstName, lastName, email, password, birthday: birthdayDate, gender, profilePicture, coverPhoto })).then(() => {
+                dispatch(setModalDisplay(!modalDisplay)) 
+                history.push(`/`)
+            })
+            .catch(async (res) => {
+            let data;
+            try {
+                // .clone() essentially allows you to read the response body twice
+                data = await res.clone().json();
+            } catch {
+                data = await res.text(); // Will hit this case if the server is down
+            }
+            if (data?.errors) setErrors(data.errors);
+            else if (data) setErrors([data]);
+            else setErrors([res.statusText]);
+            });
+      };
       
       return (
         <>
@@ -156,7 +161,7 @@ const SignUpForm = () => {
         <select name="month" id="birthMonth" value={month} onChange={(e) => setMonth(e.target.value)} required className="birthday-select">
             {renderMonthOptions()}
         </select>
-        <select name="day" id="birthDay" value={day} onChange={(e) => setDay(e.target.value)} required className="birthday-select">
+        <select name="day" id="birthDay" value={day} onChange={(e) => setDay(String(parseInt(e.target.value) + 1))} required className="birthday-select">
             {renderDayOptions()}
         </select>
         <select name="year" id="birthYear" value={year} onChange={(e) => setYear(e.target.value)} required className="birthday-select">

@@ -75,5 +75,14 @@
     resize: none;
 }
 
+.bio-edit {
+    margin-left: -10px ;
+    margin-right: 10px;
+}
+
+#bio-label {
+    margin-left: 10px;
+}
+
 
 
