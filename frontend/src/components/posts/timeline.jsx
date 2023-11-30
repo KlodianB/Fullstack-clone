@@ -55,7 +55,7 @@ const Timeline = ({userdata}) => {
 
     const submitComment = (e) => {
         e.preventDefault();
-        const commentInput = document.getElementById("comment-input")
+        const commentInput = document.getElementById(`${commentPost} newsfeed-comment-input`)
         dispatch(createComment({
             body: comment,
             userId: commentAuthor,
@@ -161,7 +161,7 @@ const Timeline = ({userdata}) => {
                                         </Link>
                                         <form  className="add-a-comment" onSubmit={submitComment}>
                                         <input className="add-a-comment"
-                                        id="comment-input"
+                                        id={`${post.id} newsfeed-comment-input`}
                                         placeholder="Add a comment..."
                                         onChange={(e) =>{
                                             setComment(e.target.value)
