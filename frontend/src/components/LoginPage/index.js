@@ -46,8 +46,8 @@ return (
       <div className="login-page">
         <div className="login-content">
           <div className="login-left">
-            <div className="fb-logo">facebook</div>
-              <p className="fb-connect-text">Connect with friends and the world around you on Facebook.</p>
+            <div className="fb-logo">klobook</div>
+              <p className="fb-connect-text">Connect with friends and the world around you on Klobook.</p>
             </div>
             <div className="login-right">
             <ul>
