@@ -25,7 +25,7 @@ function Navigation() {
         <div className="navbar-container">
           <div className='left-nav'>
             <div className='logo-container'>
-              <NavLink className="logo" exact to="/"><img src="https://openvisualfx.com/wp-content/uploads/2019/10/1509135364flat-facebook-logo-png-icon-circle.png" className='pfp'></img></NavLink> 
+              <NavLink className="logo" exact to="/"><img src="/assets/klobook.png" className='pfp'></img></NavLink> 
             </div>
             <div className="search-container">
               <i className="fa-solid fa-search fa-lg"></i> 
