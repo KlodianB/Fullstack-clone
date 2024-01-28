@@ -53,9 +53,6 @@ const CreatePostForm = ({userdata, onClose}) => {
         </div>
     )
 
-
-
-
 };
 
 export default CreatePostForm;
