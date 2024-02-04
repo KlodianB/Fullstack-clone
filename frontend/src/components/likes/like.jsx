@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createLike, deleteLike } from './store/likes';
+import './LikeButton.css';
 
 const LikeButton = ({ likeableType, likeableId }) => {
     const dispatch = useDispatch();
