@@ -253,9 +253,9 @@ const SignUpForm = () => {
                 : null}
             </div>
         </label>
-        <p className="disclaimer" id="top-disclaimer">People who use our service may have uploaded your contact information to Klobook. <a id ="learn-more" className="disclaimer" href="https://www.klobook.com/help/637205020878504">Learn more.</a></p>
+        <p className="disclaimer" id="top-disclaimer">People who use our service may have uploaded your contact information to Klobook. <a id ="learn-more" className="disclaimer">Learn more.</a></p>
         <br></br>
-        <p className="disclaimer">By clicking Sign Up, you agree to our <a id="terms" className="disclaimer" href="https://www.klobook.com/legal/terms/update">Terms</a>, <a id="privacy-policy" className="disclaimer" href="https://www.klobook.com/privacy/policy/?entry_point=data_policy_redirect&entry=0">Privacy Policy</a> and <a id="cookies-policy"className="disclaimer" href="https://www.klobook.com/privacy/policies/cookies/?entry_point=cookie_policy_redirect&entry=0">Cookies Policy</a>. You may receive SMS Notifications from us and can opt out any time.</p>
+        <p className="disclaimer">By clicking Sign Up, you agree to our <a id="terms" className="disclaimer">Terms</a>, <a id="privacy-policy" className="disclaimer" >Privacy Policy</a> and <a id="cookies-policy"className="disclaimer" >Cookies Policy</a>. You may receive SMS Notifications from us and can opt out any time.</p>
         <button type="submit" className="signup-btn" id="submitBtn">Sign Up</button>
     </form>
     </>
